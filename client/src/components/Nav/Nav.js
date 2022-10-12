@@ -4,10 +4,11 @@ import sl from "../../assets/sl.png";
 const Nav = () => {
   return (
     <nav className="navbar bg-secondary">
-      <button className="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        <img src={sl} alt="Bootstrap" width="30" height="24" />
-      </button>
-
+      <div className="headEl container justify-content-between">
+        <button className="btn btn-secondary btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          <img src={sl} alt="Bootstrap" width="30" height="30" />
+        </button>
+      </div>
       <div className="headTitle">
         <span className="staatliches fs-1 text-center">Stud Light</span>
       </div>
