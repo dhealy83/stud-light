@@ -3,9 +3,9 @@ import sl from "../../assets/sl.png";
 
 const Nav = () => {
   return (
-    <nav class="navbar bg-light">
+    <nav class="navbar bg-secondary">
       <button
-        class="btn btn-primary"
+        class="btn btn-secondary"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasExample"
@@ -33,34 +33,141 @@ const Nav = () => {
         </div>
         <div class="offcanvas-body">
           <div>
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
+            Welcome to Stud Light.
+            <br /> Navigate your flashcard categories here.
           </div>
-          <div class="dropdown mt-3">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-            >
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="#">
-                  Action
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item ">
+              <h2 class="accordion-header " id="headingOne">
+                <button
+                  class="accordion-button bg-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Html Cards
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Boiler plate
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Links
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Scripts
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button bg-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="true"
+                  aria-controls="collapseTwo"
+                >
+                  Css Cards
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Element Styling
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Custom Classes
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Custom Ids
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button bg-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="true"
+                  aria-controls="collapseThree"
+                >
+                  Java Script
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Linking style sheets
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    The Functions
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Methods
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button
+                  class="accordion-button bg-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour"
+                  aria-expanded="true"
+                  aria-controls="collapseFour"
+                >
+                  Html Cards
+                </button>
+              </h2>
+              <div
+                id="collapseFour"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingFour"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Boiler plate
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Links
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+                    Scripts
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
