@@ -6,7 +6,7 @@ const { authMiddleware } = require('./utils/auth');
 
 // Import the two parts of a GraphQL schema from ./schemas/index.js
 const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config.connection');
+const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
