@@ -40,7 +40,7 @@ const Nav = () => {
             <div class="accordion-item ">
               <h2 class="accordion-header " id="headingOne">
                 <button
-                  class="accordion-button bg-dark"
+                  class="accordion-button bg-light"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseOne"
@@ -69,23 +69,22 @@ const Nav = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="accordion" id="accordionExample">
+
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingTwo">
                 <button
-                  class="accordion-button"
+                  class="accordion-button bg-light"
                   type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
+                  data-bs-target="#collapseTwo"
                   aria-expanded="true"
-                  aria-controls="collapseOne"
+                  aria-controls="collapseTwo"
                 >
                   Css Cards
                 </button>
               </h2>
               <div
-                id="collapseOne"
+                id="collapseTwo"
                 class="accordion-collapse collapse show"
                 aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample"
@@ -103,25 +102,24 @@ const Nav = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="accordion" id="accordionExample">
+
             <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
+              <h2 class="accordion-header" id="headingThree">
                 <button
-                  class="accordion-button"
+                  class="accordion-button bg-light"
                   type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
+                  data-bs-target="#collapseThree"
                   aria-expanded="true"
-                  aria-controls="collapseOne"
+                  aria-controls="collapseThree"
                 >
                   Java Script
                 </button>
               </h2>
               <div
-                id="collapseOne"
+                id="collapseThree"
                 class="accordion-collapse collapse show"
-                aria-labelledby="headingOne"
+                aria-labelledby="headingThree"
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">
@@ -137,25 +135,24 @@ const Nav = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="accordion" id="accordionExample">
+
             <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
+              <h2 class="accordion-header" id="headingFour">
                 <button
-                  class="accordion-button"
+                  class="accordion-button bg-light"
                   type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
+                  data-bs-target="#collapseFour"
                   aria-expanded="true"
-                  aria-controls="collapseOne"
+                  aria-controls="collapseFour"
                 >
                   Html Cards
                 </button>
               </h2>
               <div
-                id="collapseOne"
+                id="collapseFour"
                 class="accordion-collapse collapse show"
-                aria-labelledby="headingOne"
+                aria-labelledby="headingFour"
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">
