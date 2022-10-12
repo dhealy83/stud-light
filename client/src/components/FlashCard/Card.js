@@ -99,9 +99,9 @@ const FlashCard = () => {
       </div>
       <div className="col v-100">
         <Card className="m-2">
-          <Form>
+          <Form className="bg-secondary rounded-2">
             <Form.Group>
-              <Form.Label>Notes</Form.Label>
+              <Form.Label className="m-2 text-white">Notes</Form.Label>
               <Form.Control as="textarea" rows={8} />
             </Form.Group>
           </Form>
