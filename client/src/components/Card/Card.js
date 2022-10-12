@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 // All of the Bootstrap imports
-import Carousel from "react-bootstrap/Carousel";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import ToggleButton from "react-bootstrap/ToggleButton";
-import Form from "react-bootstrap/Form";
+import { Form, ToggleButton, ButtonGroup, Button, Col, Row, Container, Carousel } from "react-bootstrap/";
 // All of the image imports
 import cardBackground from "../../assets/cardBackground.jpg";
+//import local css
+import "./Card.css";
+import CardData from "./CardData";
 
 const Card = () => {
   const [index, setIndex] = useState(0);
@@ -39,77 +35,47 @@ const Card = () => {
             <h1>First Card Title</h1>
             <ButtonGroup className="">
               {radios.map((radio, idx) => (
-                <ToggleButton
-                  key={idx}
-                  id={`radio-${idx}`}
-                  type="radio"
-                  variant={idx % 2 ? "outline-success" : "outline-danger"}
-                  name="radio"
-                  value={radio.value}
-                  checked={radioValue === radio.value}
-                  onChange={(e) => setRadioValue(e.currentTarget.value)}
-                  size="sm"
-                >
+                <ToggleButton key={idx} id={`radio-${idx}`} type="radio" variant={idx % 2 ? "outline-success" : "outline-danger"} name="radio" value={radio.value} checked={radioValue === radio.value} onChange={(e) => setRadioValue(e.currentTarget.value)} size="sm">
                   {radio.name}
                 </ToggleButton>
               ))}
             </ButtonGroup>
           </Col>
-          <img
-            className="d-block w-100"
-            src={cardBackground}
-            alt="First slide"
-          />
+          <img className="d-block w-100" src={cardBackground} alt="First slide" />
           <Carousel.Caption className="text-dark">
             <Container>
               <Col>
                 <Row>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  <CardData />
                 </Row>
               </Col>
             </Container>
           </Carousel.Caption>
         </Carousel.Item>
-        {/* <Carousel.Item className="buttonCheckBox">
+        <Carousel.Item className="buttonCheckBox">
           <Col className="d-flex justify-content-between">
             <h1>Second Card Title</h1>
             <ButtonGroup className="">
               {radios.map((radio, idx) => (
-                <ToggleButton
-                  key={idx}
-                  id={`radio-${idx}`}
-                  type="radio"
-                  variant={idx % 2 ? "outline-success" : "outline-danger"}
-                  name="radio"
-                  value={radio.value}
-                  checked={radioValue === radio.value}
-                  onChange={(e) => setRadioValue(e.currentTarget.value)}
-                  size="sm"
-                >
+                <ToggleButton key={idx} id={`radio-${idx}`} type="radio" variant={idx % 2 ? "outline-success" : "outline-danger"} name="radio" value={radio.value} checked={radioValue === radio.value} onChange={(e) => setRadioValue(e.currentTarget.value)} size="sm">
                   {radio.name}
                 </ToggleButton>
               ))}
             </ButtonGroup>
           </Col>
-          <img
-            className="d-block w-100"
-            src={cardBackground}
-            alt="First slide"
-          />
+          <img className="d-block w-100" src={cardBackground} alt="First slide" />
           <Carousel.Caption className="text-dark">
             <Container>
               <Col>
                 <Row>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  <CardData />
                 </Row>
               </Col>
             </Container>
           </Carousel.Caption>
-        </Carousel.Item> */}
+        </Carousel.Item>
       </Carousel>
       <Form>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
