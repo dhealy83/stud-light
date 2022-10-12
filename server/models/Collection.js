@@ -6,7 +6,7 @@ const collectionSchema = new Schema({
     type: String,
     required: true,
   },
-  questions: [Cards],
+  cards: [Cards],
 });
 
 const Collection = model("Collection", collectionSchema);

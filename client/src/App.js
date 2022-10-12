@@ -11,6 +11,7 @@ import "./App.css";
 
 import Footer from "./components/Footer/Footer";
 import Nav from "./components/Nav/Nav";
+import Card from "./components/Card/Card";
 // import Footer from "./components/Footer";
 
 // Construct our main GraphQL API endpoint
@@ -43,8 +44,10 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Nav />
-          <div className="container">
-            <Routes>{/* <Route path="/" element={<Nav />} /> */}</Routes>
+          <div className="">
+            <Routes>
+              <Route path="/" element={<Card />} />
+            </Routes>
           </div>
           <Footer />
         </div>
