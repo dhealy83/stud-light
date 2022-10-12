@@ -14,6 +14,10 @@ const Nav = () => {
         <img src={sl} alt="Bootstrap" width="30" height="24" />
       </button>
 
+      <div class="headTitle">
+        <span class="staatliches fs-1 text-center">Stud Light</span>
+      </div>
+
       <div
         class="offcanvas offcanvas-start"
         tabindex="-1"
@@ -39,21 +43,26 @@ const Nav = () => {
           <div class="accordion" id="accordionExample">
             <div class="accordion-item ">
               <h2 class="accordion-header " id="headingOne">
+                {/* TODO:Need to create dynamic ids and out them in this element */}
                 <button
                   class="accordion-button bg-light"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseOne"
+                  // TODO:Need to create dynamic ids and out them in this element
                   aria-expanded="true"
                   aria-controls="collapseOne"
+                  //   TODO://Need to create dynamic ids and out them in this element
                 >
                   Html Cards
                 </button>
               </h2>
               <div
                 id="collapseOne"
+                // TODO://Need to create dynamic ids and out them in this element
                 class="accordion-collapse collapse show"
                 aria-labelledby="headingOne"
+                // TODO://Need to create dynamic ids and out them in this element
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">
