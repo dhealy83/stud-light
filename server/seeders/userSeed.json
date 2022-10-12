@@ -1,0 +1,51 @@
+[
+  {
+    "username": "Charles",
+    "email": "charles@gmail.com",
+    "password": "password",
+    "collections": [
+      {
+        "title": "Html",
+        "cards": [
+          {
+            "question": "What is a tag",
+            "answer": "An html element"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "username": "Tyler",
+    "email": "crles@gmail.com",
+    "password": "password",
+    "collections": [
+      {
+        "title": "Html",
+        "cards": [
+          {
+            "question": "What is a tag",
+            "answer": "An html element"
+          },
+          {
+            "question": "What is a tag",
+            "answer": "An html element"
+          }
+        ]
+      },
+      {
+        "title": "Html 2",
+        "cards": [
+          {
+            "question": "What is a tag",
+            "answer": "An html element"
+          },
+          {
+            "question": "What is a tag",
+            "answer": "An html element"
+          }
+        ]
+      }
+    ]
+  }
+]
