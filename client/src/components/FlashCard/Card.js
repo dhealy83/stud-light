@@ -15,7 +15,6 @@ import cardBackground from "../../assets/cardBackground.jpg";
 import CardData from "../Card/CardData";
 // Local css files
 import "./FlashCard.css";
-import CardData from "../Card/CardData";
 
 const FlashCard = () => {
   const [index, setIndex] = useState(0);
@@ -34,12 +33,38 @@ const FlashCard = () => {
   return (
     <div className="mb-5 h-100">
       <div>
-        <Carousel activeIndex={index} onSelect={handleSelect} className="card m-2 border boarder-2 boarder-secondary rounded-3">
+        <Carousel
+          activeIndex={index}
+          onSelect={handleSelect}
+          className="card m-2 border boarder-2 boarder-secondary rounded-3"
+          interval="10000000"
+        >
           <Carousel.Item className="buttonCheckBox">
             <Col className="d-flex justify-content-evenly mx-3">
               <h1>First Card Title</h1>
+              <ButtonGroup className="m-2 d-flex justify-content-end">
+                {radios.map((radio, idx) => (
+                  <ToggleButton
+                    key={idx}
+                    id={`radio-${idx}`}
+                    type="radio"
+                    value={radio.value}
+                    name="radio"
+                    variant={idx % 2 ? "outline-success" : "outline-danger"}
+                    checked={radioValue === radio.value}
+                    onChange={(e) => setRadioValue(e.currentTarget.value)}
+                    size="lg"
+                  >
+                    {radio.name}
+                  </ToggleButton>
+                ))}
+              </ButtonGroup>
             </Col>
-            <img className="d-block w-100" src={cardBackground} alt="First slide" />
+            <img
+              className="d-block w-100"
+              src={cardBackground}
+              alt="First slide"
+            />
             <Carousel.Caption className="text-dark">
               <Container>
                 <Col>
@@ -51,10 +76,31 @@ const FlashCard = () => {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item className="buttonCheckBox">
-            <Col className="d-flex justify-content-evenly mx-3">
+            <Col className="d-flex justify-content-between mx-3">
               <h1>Second Card Title</h1>
+              <ButtonGroup className="m-2 d-flex justify-content-end">
+                {radios.map((radio, idx) => (
+                  <ToggleButton
+                    key={idx}
+                    id={`radio-${idx}`}
+                    type="radio"
+                    value={radio.value}
+                    name="radio"
+                    variant={idx % 2 ? "outline-success" : "outline-danger"}
+                    checked={radioValue === radio.value}
+                    onChange={(e) => setRadioValue(e.currentTarget.value)}
+                    size="lg"
+                  >
+                    {radio.name}
+                  </ToggleButton>
+                ))}
+              </ButtonGroup>
             </Col>
-            <img className="d-block w-100" src={cardBackground} alt="First slide" />
+            <img
+              className="d-block w-100"
+              src={cardBackground}
+              alt="First slide"
+            />
             <Carousel.Caption className="text-dark">
               <Container>
                 <Col>
@@ -66,13 +112,6 @@ const FlashCard = () => {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-        <ButtonGroup className="m-2 d-flex justify-content-end">
-          {radios.map((radio, idx) => (
-            <ToggleButton key={idx} id={`radio-${idx}`} type="radio" value={radio.value} name="radio" variant={idx % 2 ? "outline-success" : "outline-danger"} checked={radioValue === radio.value} onChange={(e) => setRadioValue(e.currentTarget.value)} size="lg">
-              {radio.name}
-            </ToggleButton>
-          ))}
-        </ButtonGroup>
       </div>
       <div className="d-flex">
         <div className="col v-100">
@@ -87,13 +126,12 @@ const FlashCard = () => {
 
           <div className="m-2">
             <Button variant="secondary" size="lg" className="w-100">
-              Save/Update
+              Update
             </Button>
           </div>
-
           <div className="m-2">
             <Button variant="secondary" size="lg" className="w-100">
-              Next Card
+              Delete Card
             </Button>
           </div>
           <div className="m-2 mt-auto">
