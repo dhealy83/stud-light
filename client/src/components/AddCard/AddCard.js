@@ -45,7 +45,12 @@ const AddCard = () => {
                 </Form.Group>
               </Form>
             </Card>
-
+            <div className="m-2">
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Upload image</Form.Label>
+                <Form.Control type="file" size="lg" />
+              </Form.Group>
+            </div>
             <div className="m-2">
               <Button variant="secondary" size="lg" className="w-100">
                 Save
