@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Collection } = require("../models");
+const { User, Collection, Card } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -59,6 +59,16 @@ const resolvers = {
       );
 
       return createCollection, collectionToUser;
+    },
+
+    addCard: async (parent, { collectionId, question, answer }) => {
+        const findCollection = await Collection.findByIdAndUpdate(
+            { _id: collectionId },
+            { $addToSet: { cards: { question, answer }} },
+            { new: true }
+        );
+
+        return findCollection;
     },
   },
 };
