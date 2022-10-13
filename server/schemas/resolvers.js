@@ -62,13 +62,20 @@ const resolvers = {
     },
 
     addCard: async (parent, { collectionId, question, answer }) => {
-        const findCollection = await Collection.findByIdAndUpdate(
-            { _id: collectionId },
-            { $addToSet: { cards: { question, answer }} },
-            { new: true }
-        );
+      const findCollection = await Collection.findByIdAndUpdate(
+        { _id: collectionId },
+        { $addToSet: { cards: { question, answer } } },
+        { new: true }
+      );
 
-        return findCollection;
+      return findCollection;
+    },
+    deleteCard: async (parent, { collectionId, cardId }) => {
+      await Collection.findByIdAndUpdate(
+        { _id: collectionId },
+        { $pull: { cards: { _id: cardId } } }
+        // { new: true }
+      );
     },
   },
 };
