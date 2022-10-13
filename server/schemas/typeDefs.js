@@ -48,6 +48,7 @@ const typeDefs = gql`
     addCollection(userId: ID, title: String!): Collection
 
     addCard(collectionId: ID, question: String!, answer: String!): Collection
+    deleteCollection(collectionId: ID!): Collection
     deleteCard(collectionId: ID!, cardId: ID!): Collection
 
     removeUser: User

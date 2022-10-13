@@ -60,7 +60,9 @@ const resolvers = {
 
       return createCollection, collectionToUser;
     },
-
+    deleteCollection: async (parent, { collectionId }) => {
+      await Collection.findOneAndDelete({ _id: collectionId });
+    },
     addCard: async (parent, { collectionId, question, answer }) => {
       const findCollection = await Collection.findByIdAndUpdate(
         { _id: collectionId },
