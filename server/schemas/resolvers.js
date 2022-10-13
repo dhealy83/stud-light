@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Collection } = require("../models");
+const { User, Collection, Card } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -24,6 +24,9 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    deleteUser: async (parent, { userId }) => {
+      await User.findOneAndDelete({ _id: userId });
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -59,6 +62,34 @@ const resolvers = {
       );
 
       return createCollection, collectionToUser;
+    },
+
+    updateCollection: async (parent, { collectionId, title }) => {
+      await Collection.findOneAndUpdate(
+        { _id: collectionId },
+        { title: title },
+        { new: true }
+      );
+    },
+
+    deleteCollection: async (parent, { collectionId }) => {
+      await Collection.findOneAndDelete({ _id: collectionId });
+    },
+    addCard: async (parent, { collectionId, question, answer }) => {
+      const findCollection = await Collection.findByIdAndUpdate(
+        { _id: collectionId },
+        { $addToSet: { cards: { question, answer } } },
+        { new: true }
+      );
+
+      return findCollection;
+    },
+    deleteCard: async (parent, { collectionId, cardId }) => {
+      await Collection.findByIdAndUpdate(
+        { _id: collectionId },
+        { $pull: { cards: { _id: cardId } } }
+        // { new: true }
+      );
     },
   },
 };

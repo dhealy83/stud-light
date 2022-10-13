@@ -40,7 +40,7 @@ const FlashCard = () => {
           interval="10000000"
         >
           <Carousel.Item className="buttonCheckBox">
-            <Col className="d-flex justify-content-between mx-3">
+            <Col className="d-flex justify-content-evenly mx-3">
               <h1>First Card Title</h1>
               <ButtonGroup className="m-2 d-flex justify-content-end">
                 {radios.map((radio, idx) => (
@@ -134,7 +134,6 @@ const FlashCard = () => {
               Delete Card
             </Button>
           </div>
-
           <div className="m-2 mt-auto">
             <Link to="/AddCard">
               <Button variant="secondary" size="lg" className="w-100">
