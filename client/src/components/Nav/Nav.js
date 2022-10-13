@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import sl from "../../assets/sl.png";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/esm/Button";
+import Modal from "react-bootstrap/Modal";
 
 const Nav = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <nav className="navbar bg-secondary">
       <div className="headEl container justify-content-between">
@@ -253,6 +260,28 @@ const Nav = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="m-2">
+          <Button variant="secondary" onClick={handleShow}>
+            Delete Account
+          </Button>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Are you sure you'd like to delete your account?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={handleClose}>
+                Delete Account
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
     </nav>
