@@ -8,8 +8,54 @@
         "title": "Html",
         "cards": [
           {
-            "question": "What is a tag",
+            "question": "What is a tag?",
             "answer": "An html element"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "username": "Matt",
+    "email": "matt@gmail.com",
+    "password": "password",
+    "collections": [
+      {
+        "title": "Html",
+        "cards": [
+          {
+            "question": "What does html stand for?",
+            "answer": "Hypertext Markup Language"
+          },
+          {
+            "question": "What is html used for?",
+            "answer": "Html is used to design web applications"
+          }
+        ]
+      },
+      {
+        "title": "JavaScript",
+        "cards": [
+          {
+            "question": "What is recursion?",
+            "answer": "When a function class itself until the desired results"
+          },
+          {
+            "question": "Is JavaScript a strictly typed language?",
+            "answer": "JavaScript is loosely type"
+          },
+          {
+            "question": "How can Javascript be run without a browser?",
+            "answer": "JavaScript can be run with Node, outside of a browser"
+          }
+        ]
+      },
+      {
+        "title": "CSS",
+        "cards": [
+          {
+            "question": "What is CSS?",
+            "answer": "CSS is used to style web applications, and stand for cascading style sheets"
           }
         ]
       }
@@ -34,15 +80,15 @@
         ]
       },
       {
-        "title": "Html 2",
+        "title": "JavaScript",
         "cards": [
           {
-            "question": "What is a tag",
-            "answer": "An html element"
+            "question": "What is a function",
+            "answer": "A chunk of code that you can use over and over again."
           },
           {
-            "question": "What is a tag",
-            "answer": "An html element"
+            "question": "What are variables",
+            "answer": "A value that is stored into memory, some can change and other can not."
           }
         ]
       }
