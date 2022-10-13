@@ -15,7 +15,6 @@ import cardBackground from "../../assets/cardBackground.jpg";
 import CardData from "../Card/CardData";
 // Local css files
 import "./FlashCard.css";
-import CardData from "../Card/CardData";
 
 const FlashCard = () => {
   const [index, setIndex] = useState(0);
