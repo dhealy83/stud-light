@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Collection } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -40,6 +40,25 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    // Leaving out context for now until we get authorization
+    addCollection: async (parent, { userId, title }) => {
+      // if (context.user){}
+
+      console.log(title);
+      const createCollection = await Collection.create({
+        title: title,
+      });
+      const collection = createCollection;
+      console.log(collection._id.valueOf());
+
+      const collectionToUser = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $addToSet: { collections: collection._id.valueOf() } },
+        { new: true }
+      );
+
+      return createCollection, collectionToUser;
     },
   },
 };

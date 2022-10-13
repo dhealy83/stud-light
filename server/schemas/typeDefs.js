@@ -15,6 +15,7 @@ const typeDefs = gql`
   }
 
   type Collection {
+    _id: ID
     title: String
     cards: [Card]
   }
@@ -22,6 +23,16 @@ const typeDefs = gql`
   type Auth {
     token: ID!
     user: User
+  }
+
+  input collectionInput {
+    title: String!
+    card: cardInput
+  }
+
+  input cardInput {
+    question: String
+    answer: String
   }
 
   type Query {
@@ -33,6 +44,10 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+
+    addCollection(userId: ID, title: String!): Collection
+
+    removeUser: User
   }
 `;
 
