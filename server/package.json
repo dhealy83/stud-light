@@ -5,9 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npx nodemon server.js",
-    "start": "node server.js",
-    "seed": "node seeders/seed.js"
+    "seed": "node seeders/seed.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

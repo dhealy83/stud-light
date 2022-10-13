@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import sl from "../../assets/sl.png";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -12,12 +13,17 @@ const Nav = () => {
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasExample"
             aria-controls="offcanvasExample"
+            fixed="bottom"
           >
             <img src={sl} alt="Bootstrap" width="30" height="30" />
           </button>
         </div>
         <div className="headTitle">
-          <span className="staatliches fs-1 text-center">Stud Light</span>
+          <Link to="/" className="text-decoration-none">
+            <span className="staatliches fs-1 text-center text-dark ">
+              Stud Light
+            </span>
+          </Link>
         </div>
       </div>
 

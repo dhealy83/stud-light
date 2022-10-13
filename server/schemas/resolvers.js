@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Collection, Card } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -25,6 +25,9 @@ const resolvers = {
 
       return { token, user };
     },
+    deleteUser: async (parent, {userId}) => {
+      await User.findOneAndDelete({ _id: userId });
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -40,6 +43,44 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    // Leaving out context for now until we get authorization
+    addCollection: async (parent, { userId, title }) => {
+      // if (context.user){}
+
+      console.log(title);
+      const createCollection = await Collection.create({
+        title: title,
+      });
+      const collection = createCollection;
+      console.log(collection._id.valueOf());
+
+      const collectionToUser = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $addToSet: { collections: collection._id.valueOf() } },
+        { new: true }
+      );
+
+      return createCollection, collectionToUser;
+    },
+    deleteCollection: async (parent, { collectionId }) => {
+      await Collection.findOneAndDelete({ _id: collectionId });
+    },
+    addCard: async (parent, { collectionId, question, answer }) => {
+      const findCollection = await Collection.findByIdAndUpdate(
+        { _id: collectionId },
+        { $addToSet: { cards: { question, answer } } },
+        { new: true }
+      );
+
+      return findCollection;
+    },
+    deleteCard: async (parent, { collectionId, cardId }) => {
+      await Collection.findByIdAndUpdate(
+        { _id: collectionId },
+        { $pull: { cards: { _id: cardId } } }
+        // { new: true }
+      );
     },
   },
 };
