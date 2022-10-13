@@ -12,6 +12,7 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Nav from "./components/Nav/Nav";
 import Card from "./components/FlashCard/Card";
+import AddCard from "./components/AddCard/AddCard";
 // import Footer from "./components/Footer";
 
 // Construct our main GraphQL API endpoint
@@ -47,6 +48,7 @@ function App() {
           <div className="">
             <Routes>
               <Route path="/" element={<Card />} />
+              <Route path="/AddCard" element={<AddCard />} />
             </Routes>
           </div>
           <Footer />
