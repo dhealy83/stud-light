@@ -11,7 +11,7 @@ import "./App.css";
 
 import Footer from "./components/Footer/Footer";
 import Nav from "./components/Nav/Nav";
-import Card from "./components/Card/Card";
+import Card from "./components/FlashCard/Card";
 // import Footer from "./components/Footer";
 
 // Construct our main GraphQL API endpoint
