@@ -56,7 +56,7 @@ const Nav = () => {
             <div className="accordion-item">
               <h2 className="accordion-header" id="flush-headingOne">
                 <button
-                  class="accordion-button bg-light text-light text-dark"
+                  class="accordion-button bg-light text-dark"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#flush-FlashcardOne"
@@ -72,11 +72,16 @@ const Nav = () => {
                 aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample"
               >
+<<<<<<< Updated upstream
                 <div className="accordion-body bg-light">
                   <button
                     type="button"
                     className="btn btn-secondary btn-sm m-1"
                   >
+=======
+                <div class="accordion-body">
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+>>>>>>> Stashed changes
                     Boiler plate
                   </button>
                   <button
