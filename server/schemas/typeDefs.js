@@ -10,6 +10,7 @@ const typeDefs = gql`
   }
 
   type Card {
+    _id: ID
     question: String
     answer: String
   }
@@ -43,6 +44,12 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+    updateUser(
+      userId: ID!
+      username: String
+      email: String
+      password: String
+    ): User
     deleteUser(userId: ID!): User
     login(email: String!, password: String!): Auth
 
@@ -51,7 +58,12 @@ const typeDefs = gql`
     deleteCollection(collectionId: ID!): Collection
 
     addCard(collectionId: ID, question: String!, answer: String!): Collection
-
+    updateCard(
+      collectionId: ID!
+      cardId: ID!
+      question: String!
+      answer: String!
+    ): Collection
     deleteCard(collectionId: ID!, cardId: ID!): Collection
 
     removeUser: User

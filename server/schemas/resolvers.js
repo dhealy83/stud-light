@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Collection, Card } = require("../models");
+const { findOne } = require("../models/User");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -25,9 +26,18 @@ const resolvers = {
 
       return { token, user };
     },
+
+    updateUser: async (parent, { userId, username, email, password }) => {
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { username: username, email: email, password: password },
+        { new: true }
+      );
+    },
     deleteUser: async (parent, { userId }) => {
       await User.findOneAndDelete({ _id: userId });
     },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -44,6 +54,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     // Leaving out context for now until we get authorization
     addCollection: async (parent, { userId, title }) => {
       // if (context.user){}
@@ -75,6 +86,7 @@ const resolvers = {
     deleteCollection: async (parent, { collectionId }) => {
       await Collection.findOneAndDelete({ _id: collectionId });
     },
+
     addCard: async (parent, { collectionId, question, answer }) => {
       const findCollection = await Collection.findByIdAndUpdate(
         { _id: collectionId },
@@ -84,6 +96,14 @@ const resolvers = {
 
       return findCollection;
     },
+    // WIP - BROKEN
+    updateCard: async (parent, { collectionId, cardId, question, answer }) => {
+      await Collection.findOneAndUpdate(
+        { _id: collectionId, card: { _id: cardId } },
+        { $set: { cards: { question: question, answer: answer } } }
+      );
+    },
+
     deleteCard: async (parent, { collectionId, cardId }) => {
       await Collection.findByIdAndUpdate(
         { _id: collectionId },
