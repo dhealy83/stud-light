@@ -72,11 +72,16 @@ const Nav = () => {
                 aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample"
               >
+<<<<<<< Updated upstream
                 <div className="accordion-body bg-light">
                   <button
                     type="button"
                     className="btn btn-secondary btn-sm m-1"
                   >
+=======
+                <div class="accordion-body">
+                  <button type="button" class="btn btn-secondary btn-sm m-1">
+>>>>>>> Stashed changes
                     Boiler plate
                   </button>
                   <button
