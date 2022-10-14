@@ -17,9 +17,9 @@ const server = new ApolloServer({
 });
 
 // This is your test secret API key.
-const stripe = require("stripe")(
-  "sk_test_51LsZXPB5ZCwPW4clsUoImeUGqrg87OY9PRaBrtUNqOUqK67CI3aA0LhJjwtEwD8svw4dQUlToP0hT65WmKv6a6lF003u2NWLuE"
-);
+// const stripe = require("stripe")(
+//   "sk_test_51LsZXPB5ZCwPW4clsUoImeUGqrg87OY9PRaBrtUNqOUqK67CI3aA0LhJjwtEwD8svw4dQUlToP0hT65WmKv6a6lF003u2NWLuE"
+// );
 
 app.use(express.static("public"));
 app.use(express.json());
