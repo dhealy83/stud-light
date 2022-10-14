@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import sl from "../../assets/sl.png";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
