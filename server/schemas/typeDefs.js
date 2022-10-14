@@ -29,6 +29,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
+    collections: [Collection]
     user(userId: ID!): User
     me: User
   }
@@ -58,7 +59,7 @@ const typeDefs = gql`
       question: String!
       answer: String!
       notes: String
-    ): Collection
+    ): Card
 
     updateCard(
       cardId: ID!
