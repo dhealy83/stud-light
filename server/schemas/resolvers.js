@@ -25,7 +25,7 @@ const resolvers = {
 
       return { token, user };
     },
-    deleteUser: async (parent, {userId}) => {
+    deleteUser: async (parent, { userId }) => {
       await User.findOneAndDelete({ _id: userId });
     },
     login: async (parent, { email, password }) => {
@@ -63,6 +63,15 @@ const resolvers = {
 
       return createCollection, collectionToUser;
     },
+
+    updateCollection: async (parent, { collectionId, title }) => {
+      await Collection.findOneAndUpdate(
+        { _id: collectionId },
+        { title: title },
+        { new: true }
+      );
+    },
+
     deleteCollection: async (parent, { collectionId }) => {
       await Collection.findOneAndDelete({ _id: collectionId });
     },

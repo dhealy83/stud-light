@@ -3,7 +3,6 @@ import sl from "../../assets/sl.png";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import Modal from "react-bootstrap/Modal";
-
 const Nav = () => {
   const [show, setShow] = useState(false);
 
