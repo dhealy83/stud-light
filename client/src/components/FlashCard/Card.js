@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // All of the Bootstrap imports
-import Card from "react-bootstrap/Card";
-import Carousel from "react-bootstrap/Carousel";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import ToggleButton from "react-bootstrap/ToggleButton";
-import Form from "react-bootstrap/Form";
+
+import { Form, ToggleButton, Button, Col, Row, Container, Carousel, Card, ButtonGroup } from "react-bootstrap";
 // All of the image imports
 import cardBackground from "../../assets/cardBackground.jpg";
 import CardData from "../Card/CardData";
