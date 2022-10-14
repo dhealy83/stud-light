@@ -101,7 +101,7 @@ const Donate = () => {
               <Form.Label htmlFor="card-element">Card</Form.Label>
               <CardElement id="card-element" />
             </Form.Group>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-between v-100">
               <Button variant="light" className="mx-5">
                 Donate $25
               </Button>
