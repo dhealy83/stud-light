@@ -115,6 +115,7 @@ const resolvers = {
         { question: question, answer: answer, notes: notes },
         { new: true }
       );
+
     },
 
     deleteCard: async (parent, { collectionId, cardId }) => {

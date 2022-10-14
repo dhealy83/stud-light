@@ -16,3 +16,9 @@
   opacity: 0.5;
   transition: opacity 0.15s ease;
 }
+
+.wholeCard {
+  display: block;
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
