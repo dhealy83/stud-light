@@ -12,7 +12,7 @@ const SignUp = () => {
   return (
     <>
       <Button variant="light" onClick={handleShow}>
-        Login
+        Sign Up
       </Button>
 
       <Modal show={show} onHide={handleClose}>
