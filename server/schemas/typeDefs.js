@@ -9,6 +9,12 @@ const typeDefs = gql`
     collections: [Collection]
   }
 
+  type Collection {
+    _id: ID
+    title: String
+    cards: [Card]
+  }
+
   type Card {
     _id: ID
     question: String
@@ -16,25 +22,9 @@ const typeDefs = gql`
     notes: String
   }
 
-  type Collection {
-    _id: ID
-    title: String
-    cards: [Card]
-  }
-
   type Auth {
     token: ID!
     user: User
-  }
-
-  input collectionInput {
-    title: String!
-    card: cardInput
-  }
-
-  input cardInput {
-    question: String
-    answer: String
   }
 
   type Query {
@@ -45,29 +35,39 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+
     updateUser(
       userId: ID!
       username: String
       email: String
       password: String
     ): User
+
     deleteUser(userId: ID!): User
+
     login(email: String!, password: String!): Auth
 
-    addCollection(userId: ID, title: String!): Collection
-    updateCollection(collectionId: ID!, title: String!): Collection
-    deleteCollection(collectionId: ID!): Collection
+    addCollection(userId: ID!, title: String!): Collection
 
-    addCard(collectionId: ID, question: String!, answer: String!, notes: String): Collection
-    updateCard(
+    updateCollection(collectionId: ID!, title: String!): Collection
+
+    deleteCollection(userId: ID!, collectionId: ID!): Collection
+
+    addCard(
       collectionId: ID!
+      question: String!
+      answer: String!
+      notes: String
+    ): Collection
+
+    updateCard(
       cardId: ID!
       question: String!
       answer: String!
-    ): Collection
-    deleteCard(collectionId: ID!, cardId: ID!): Collection
+      notes: String
+    ): Card
 
-    removeUser: User
+    deleteCard(collectionId: ID!, cardId: ID!): Card
   }
 `;
 

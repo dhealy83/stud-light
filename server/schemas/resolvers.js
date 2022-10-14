@@ -83,36 +83,46 @@ const resolvers = {
       );
     },
 
-    deleteCollection: async (parent, { collectionId }) => {
+    deleteCollection: async (parent, { userId, collectionId }) => {
+      await User.findByIdAndUpdate(
+        { _id: userId },
+        { $pull: { collections: collectionId } }
+      );
       await Collection.findOneAndDelete({ _id: collectionId });
     },
 
     addCard: async (parent, { collectionId, question, answer, notes }) => {
-      const findCollection = await Collection.findByIdAndUpdate(
+      const createCard = await Card.create({
+        question: question,
+        answer: answer,
+        notes: notes,
+      });
+      const card = createCard;
+      console.log(card._id.valueOf(), "line 100");
+
+      const cardToCollection = await Collection.findByIdAndUpdate(
         { _id: collectionId },
-        { $addToSet: { cards: { question, answer, notes } } },
+        { $addToSet: { cards: card._id.valueOf() } },
+        { new: true }
+      ).populate("cards");
+
+      return createCard, cardToCollection;
+    },
+
+    updateCard: async (parent, { cardId, question, answer, notes }) => {
+      await Card.findOneAndUpdate(
+        { _id: cardId },
+        { question: question, answer: answer, notes: notes },
         { new: true }
       );
-
-      return findCollection;
-    },
-    // WIP - BROKEN
-    updateCard: async (parent, { collectionId, cardId, question, answer }) => {
-      const getCollection = await Collection.findOne({ _id: collectionId });
-      const getCard = await getCollection.findOne({ "cards._id": cardId });
-      const updateCardFields = await getCard.update(
-        { question: question },
-        { answer: answer }
-      );
-      return updateCardFields;
     },
 
     deleteCard: async (parent, { collectionId, cardId }) => {
       await Collection.findByIdAndUpdate(
         { _id: collectionId },
-        { $pull: { cards: { _id: cardId } } }
-        // { new: true }
+        { $pull: { cards: cardId } }
       );
+      await Card.findOneAndDelete({ _id: cardId });
     },
   },
 };

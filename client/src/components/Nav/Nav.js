@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import sl from "../../assets/sl.png";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
@@ -10,7 +10,7 @@ const Nav = () => {
   const handleShow = () => setShow(true);
 
   return (
-    <nav className="navbar bg-secondary">
+    <nav className="navbar bg-secondary fixed-top">
       <div className="headEl container justify-content-between">
         <div className="">
           <button

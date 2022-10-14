@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import Footer from "./components/Footer/Footer";
-import Nav from "./components/Nav/Nav";
+import OffcanvasNav from "./components/Nav/Nav";
 import Card from "./components/FlashCard/Card";
 import AddCard from "./components/AddCard/AddCard";
 // import Footer from "./components/Footer";
@@ -44,7 +44,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh overflow-auto">
-          <Nav />
+          <OffcanvasNav />
           <div className="">
             <Routes>
               <Route path="/" element={<Card />} />
