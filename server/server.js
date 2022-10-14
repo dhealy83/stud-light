@@ -22,6 +22,7 @@ const stripe = require("stripe")(
 );
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const calculateOrderAmount = (items) => {
@@ -48,10 +49,8 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
-app.listen(3001, () => console.log("Node server listening on port 3001!"));
+//app.listen(3001, () => console.log("Node server listening on port 3001!"));
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 // if (process.env.NODE_ENV === 'production') {
 //     app.use(express.static(path.join(__dirname, '../client/build')));
