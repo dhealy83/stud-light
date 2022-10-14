@@ -1,10 +1,18 @@
-import { FaQuestion as Question, FaExclamation as Answer } from "react-icons/fa";
+import {
+  FaQuestion as Question,
+  FaExclamation as Answer,
+} from "react-icons/fa";
 import React, { useState } from "react";
 // import Animista, { AnimistaTypes } from "react-animista";
 import "./Card.css";
 
 const CardData = () => {
   const [toggle, setToggle] = useState(false);
+
+  // const handleSelect = (selectedIndex, e) => {
+  //   setIndex(selectedIndex);
+  //   setToggle(false);
+  // };
 
   return (
     <>

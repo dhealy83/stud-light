@@ -29,8 +29,9 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    collections: [Collection]
     user(userId: ID!): User
+    collections: [Collection]
+    collection(collectionId: ID!): Collection
     me: User
   }
 

@@ -11,7 +11,7 @@ import "./App.css";
 
 import Footer from "./components/Footer/Footer";
 import OffcanvasNav from "./components/Nav/Nav";
-import Card from "./components/FlashCard/Card";
+import Card from "./components/Carousel/Carousel";
 import AddCard from "./components/AddCard/AddCard";
 // import Footer from "./components/Footer";
 

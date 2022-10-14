@@ -24,6 +24,7 @@ const FlashCard = () => {
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
+    // setToggle(false);
   };
 
   const [checked, setChecked] = useState(false);
