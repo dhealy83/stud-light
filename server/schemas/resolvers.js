@@ -98,10 +98,22 @@ const resolvers = {
     },
     // WIP - BROKEN
     updateCard: async (parent, { collectionId, cardId, question, answer }) => {
-      await Collection.findOneAndUpdate(
-        { _id: collectionId, card: { _id: cardId } },
-        { $set: { cards: { question: question, answer: answer } } }
-      );
+      try {
+        const getCollection = await Collection.findOne({ _id: collectionId });
+        const res = await getCollection.updateOne(
+          { "cards._id": cardId },
+          {
+            $push: {
+              "cards.$.question": question,
+              "cards.$.answer": answer,
+            },
+          }
+        );
+        return res;
+      } catch (err) {
+        console.log(err);
+        return err;
+      }
     },
 
     deleteCard: async (parent, { collectionId, cardId }) => {
