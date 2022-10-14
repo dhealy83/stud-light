@@ -13,6 +13,7 @@ const typeDefs = gql`
     _id: ID
     question: String
     answer: String
+    notes: String
   }
 
   type Collection {
@@ -57,7 +58,7 @@ const typeDefs = gql`
     updateCollection(collectionId: ID!, title: String!): Collection
     deleteCollection(collectionId: ID!): Collection
 
-    addCard(collectionId: ID, question: String!, answer: String!): Collection
+    addCard(collectionId: ID, question: String!, answer: String!, notes: String): Collection
     updateCard(
       collectionId: ID!
       cardId: ID!
