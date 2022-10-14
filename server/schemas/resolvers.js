@@ -8,15 +8,12 @@ const resolvers = {
     users: async () => {
       return await User.find({}).populate("collections");
     },
-
-    user: async (parent, args) => {
-      return await User.findOne({ _id: args.userId }).populate("collections");
-    },
-
     collections: async () => {
       return await Collection.find({}).populate("cards");
     },
-
+    user: async (parent, args) => {
+      return await User.findOne({ _id: args.userId }).populate("collections");
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
