@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { FaDonate } from "react-icons/fa";
+
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+
+(async () => {
+  const response = await fetch("/secret");
+  const { client_secret: clientSecret } = await response.json();
+  // Render the form using the clientSecret
+})();
 
 const Donate = () => {
   const [lgShow, setLgShow] = useState(false);
