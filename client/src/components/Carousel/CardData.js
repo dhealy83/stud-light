@@ -9,11 +9,6 @@ import "./Card.css";
 const CardData = () => {
   const [toggle, setToggle] = useState(false);
 
-  // const handleSelect = (selectedIndex, e) => {
-  //   setIndex(selectedIndex);
-  //   setToggle(false);
-  // };
-
   return (
     <>
       {/* {toggle ? <a href="#" className="toggle" src={Question} alt="question mark" onClick={() => setToggle(!toggle)} /> 
