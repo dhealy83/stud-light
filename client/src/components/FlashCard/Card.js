@@ -2,7 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // All of the Bootstrap imports
 
-import { Form, ToggleButton, Button, Col, Row, Container, Carousel, Card, ButtonGroup } from "react-bootstrap";
+import {
+  Form,
+  ToggleButton,
+  Button,
+  Col,
+  Row,
+  Container,
+  Carousel,
+  Card,
+  ButtonGroup,
+} from "react-bootstrap";
 // All of the image imports
 import cardBackground from "../../assets/cardBackground.jpg";
 import CardData from "../Card/CardData";
@@ -24,7 +34,7 @@ const FlashCard = () => {
     { name: "√", value: "2" },
   ];
   return (
-    <div className="mb-5 h-100">
+    <div className="wholeCard h-100">
       <div>
         <Carousel
           activeIndex={index}
