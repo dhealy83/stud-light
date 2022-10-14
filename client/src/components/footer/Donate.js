@@ -94,23 +94,25 @@ const Donate = () => {
               <Form.Control type="text" placeholder="(303)555-0123" autoFocus />
             </Form.Group>
             <Form.Group
-              className="mb-3"
+              className="mb-5"
               id="payment-form"
               onSubmit={handleSubmit}
             >
               <Form.Label htmlFor="card-element">Card</Form.Label>
               <CardElement id="card-element" />
             </Form.Group>
-            <div className="d-flex justify-content-between v-100">
-              <Button variant="light" className="mx-5">
-                Donate $25
-              </Button>
-              <Button variant="light" className="mx-5">
-                Donate $50
-              </Button>
-              <Button variant="light" className="mx-5">
-                Donate $100
-              </Button>
+            <div className="w-100">
+              <div className="d-flex justify-content-center ">
+                <Button variant="light" className="mx-2">
+                  Donate $25
+                </Button>
+                <Button variant="light" className="mx-2">
+                  Donate $50
+                </Button>
+                <Button variant="light" className="mx-2">
+                  Donate $100
+                </Button>
+              </div>
             </div>
           </Form>
         </Modal.Body>
