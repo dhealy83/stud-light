@@ -87,10 +87,10 @@ const resolvers = {
       await Collection.findOneAndDelete({ _id: collectionId });
     },
 
-    addCard: async (parent, { collectionId, question, answer }) => {
+    addCard: async (parent, { collectionId, question, answer, notes }) => {
       const findCollection = await Collection.findByIdAndUpdate(
         { _id: collectionId },
-        { $addToSet: { cards: { question, answer } } },
+        { $addToSet: { cards: { question, answer, notes } } },
         { new: true }
       );
 
