@@ -56,7 +56,7 @@ const Nav = () => {
             <div className="accordion-item">
               <h2 className="accordion-header" id="flush-headingOne">
                 <button
-                  class="accordion-button bg-light text-dark"
+                  className="accordion-button collapsed bg-light"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#flush-FlashcardOne"
@@ -67,21 +67,16 @@ const Nav = () => {
                 </button>
               </h2>
               <div
-                id="collapse"
-                class="accordion-collapse collapse show"
-                aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample"
+                id="flush-FlashcardOne"
+                className="accordion-collapse collapse"
+                aria-labelledby="flush-headingOne"
+                data-bs-parent="#menu"
               >
-<<<<<<< Updated upstream
                 <div className="accordion-body bg-light">
                   <button
                     type="button"
                     className="btn btn-secondary btn-sm m-1"
                   >
-=======
-                <div class="accordion-body">
-                  <button type="button" class="btn btn-secondary btn-sm m-1">
->>>>>>> Stashed changes
                     Boiler plate
                   </button>
                   <button
@@ -99,106 +94,193 @@ const Nav = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button
-                class="accordion-button bg-light text-dark"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="true"
-                aria-controls="collapseTwo"
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="flush-headingTwo">
+                <button
+                  className="accordion-button collapsed bg-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseTwo"
+                >
+                  CSS Flashcards
+                </button>
+              </h2>
+              <div
+                id="flush-collapseTwo"
+                className="accordion-collapse collapse"
+                aria-labelledby="flush-headingTwo"
+                data-bs-parent="#menu"
               >
-                Css Cards
-              </button>
-            </h2>
-            <div
-              id="collapseTwo"
-              class="accordion-collapse collapse show"
-              aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  Element Styling
+                <div className="accordion-body bg-light">
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Element Styling
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Custom Classes
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Custom Ids
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="flush-headingThree">
+                <button
+                  className="accordion-button collapsed bg-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseThree"
+                >
+                  JavaScript Flashcards
                 </button>
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  Custom Classes
+              </h2>
+              <div
+                id="flush-collapseThree"
+                className="accordion-collapse collapse"
+                aria-labelledby="flush-headingThree"
+                data-bs-parent="#menu"
+              >
+                <div className="accordion-body bg-light">
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Linking style sheets
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    The Functions
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Methods
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="flush-headingFour">
+                <button
+                  className="accordion-button collapsed bg-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFour"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseFour"
+                >
+                  Test Suite A
                 </button>
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  Custom Ids
+              </h2>
+              <div
+                id="flush-collapseFour"
+                className="accordion-collapse collapse"
+                aria-labelledby="flush-headingFour"
+                data-bs-parent="#menu"
+              >
+                <div className="accordion-body bg-light">
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Test item #1
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Test item #2
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Test item #3
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="flush-headingFive">
+                <button
+                  className="accordion-button collapsed bg-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFive"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseFive"
+                >
+                  Test Suite B
                 </button>
+              </h2>
+              <div
+                id="flush-collapseFive"
+                className="accordion-collapse collapse"
+                aria-labelledby="flush-headingFive"
+                data-bs-parent="#menu"
+              >
+                <div className="accordion-body bg-light">
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Test item #1
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Test item #2
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-sm m-1"
+                  >
+                    Test item #3
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="m-2">
+          <Button variant="secondary" onClick={handleShow}>
+            Delete Account
+          </Button>
 
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button
-                class="accordion-button bg-light text-dark"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-                aria-expanded="true"
-                aria-controls="collapseThree"
-              >
-                Java Script
-              </button>
-            </h2>
-            <div
-              id="collapseThree"
-              class="accordion-collapse collapse show"
-              aria-labelledby="headingThree"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  Linking style sheets
-                </button>
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  The Functions
-                </button>
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  Methods
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingFour">
-              <button
-                class="accordion-button bg-light text-dark"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseFour"
-                aria-expanded="true"
-                aria-controls="collapseFour"
-              >
-                Html Cards
-              </button>
-            </h2>
-            <div
-              id="collapseFour"
-              class="accordion-collapse collapse show"
-              aria-labelledby="headingFour"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  Boiler plate
-                </button>
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  Links
-                </button>
-                <button type="button" class="btn btn-secondary btn-sm m-1">
-                  Scripts
-                </button>
-              </div>
-            </div>
-          </div>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Are you sure you'd like to delete your account?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={handleClose}>
+                Delete Account
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
     </nav>

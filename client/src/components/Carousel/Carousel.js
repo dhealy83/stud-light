@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -7,7 +7,8 @@ import {
 } from "react-icons/fa";
 // All of the Bootstrap imports
 
-import FlashCard from "./FlashCard";
+// import FlashCard from "./FlashCard";
+// import CardData from "./CardData";
 
 import {
   Form,
@@ -35,18 +36,21 @@ const fakeCollection = {
       title: "Title1",
       question: "Question1",
       answer: "Answer1",
+      notes: "these are notes.",
     },
     {
       _id: "2",
       title: "Title2",
       question: "Question2",
       answer: "Answer2",
+      notes: "these are notesdfsfsdfdsfs.",
     },
     {
       _id: "3",
       title: "Title3",
       question: "Question3",
       answer: "Answer3",
+      notes: "these are notsadbfdhgsxgt5678965es.",
     },
   ],
 };
@@ -61,7 +65,6 @@ const FlashCarousel = () => {
 
   const [toggle, setToggle] = useState(false);
 
-  const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState("1");
 
   const radios = [
@@ -145,13 +148,13 @@ const FlashCarousel = () => {
                   </Col>
                 </Container>
               </Carousel.Caption>
+              {/* 
+              <FlashCard
+                key={obj._id}
+                answer={obj.answer}
+                question={obj.question}
+              /> */}
             </Carousel.Item>
-
-            // <FlashCard
-            //   key={obj._id}
-            //   answer={obj.answer}
-            //   question={obj.question}
-            // />
           ))}
         </Carousel>
       </div>
