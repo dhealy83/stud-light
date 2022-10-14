@@ -83,33 +83,46 @@ const resolvers = {
       );
     },
 
-    deleteCollection: async (parent, { collectionId }) => {
+    deleteCollection: async (parent, { userId, collectionId }) => {
+      await User.findByIdAndUpdate(
+        { _id: userId },
+        { $pull: { collections: collectionId } }
+      );
       await Collection.findOneAndDelete({ _id: collectionId });
     },
 
     addCard: async (parent, { collectionId, question, answer, notes }) => {
-      const findCollection = await Collection.findByIdAndUpdate(
-        { _id: collectionId },
-        { $addToSet: { cards: { question, answer, notes } } },
-        { new: true }
-      );
+      const createCard = await Card.create({
+        question: question,
+        answer: answer,
+        notes: notes,
+      });
+      const card = createCard;
+      console.log(card._id.valueOf(), "line 100");
 
-      return findCollection;
+      const cardToCollection = await Collection.findByIdAndUpdate(
+        { _id: collectionId },
+        { $addToSet: { cards: card._id.valueOf() } },
+        { new: true }
+      ).populate("cards");
+
+      return createCard, cardToCollection;
     },
-    // WIP - BROKEN
-    updateCard: async (parent, { collectionId, cardId, question, answer }) => {
-      await Collection.findOneAndUpdate(
-        { _id: collectionId, card: { _id: cardId } },
-        { $set: { cards: { question: question, answer: answer } } }
+
+    updateCard: async (parent, { cardId, question, answer, notes }) => {
+      await Card.findOneAndUpdate(
+        { _id: cardId },
+        { question: question, answer: answer, notes: notes },
+        { new: true }
       );
     },
 
     deleteCard: async (parent, { collectionId, cardId }) => {
       await Collection.findByIdAndUpdate(
         { _id: collectionId },
-        { $pull: { cards: { _id: cardId } } }
-        // { new: true }
+        { $pull: { cards: cardId } }
       );
+      await Card.findOneAndDelete({ _id: cardId });
     },
   },
 };

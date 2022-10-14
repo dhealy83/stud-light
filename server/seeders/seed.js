@@ -8,12 +8,14 @@ db.once("open", async () => {
   try {
     await User.deleteMany({});
     await Collection.deleteMany({});
+    await Card.deleteMany({});
     // Create user
     // Create collection
     // update user so collection is attached to them
 
     // for of used for arrays
     for (const i of userSeeds) {
+      // const currentCard = await Card.create(i.cards)
       const currentCollection = await Collection.create(i.collections);
       const collectionID = currentCollection.map((obj) => obj._id);
       await User.create({
