@@ -12,12 +12,12 @@ const SignUp = () => {
   return (
     <>
       <Button variant="light" onClick={handleShow}>
-        Login
+        Sign up
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
+          <Modal.Title>Sign up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -27,11 +27,7 @@ const SignUp = () => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
+              <Form.Control type="email" placeholder="name@example.com" autoFocus />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Password</Form.Label>
