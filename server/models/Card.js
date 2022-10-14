@@ -9,6 +9,9 @@ const cardSchema = new Schema({
     type: String,
     required: true,
   },
+  notes: {
+    type: String,
+  },
 });
 
 module.exports = cardSchema;

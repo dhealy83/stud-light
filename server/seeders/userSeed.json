@@ -9,7 +9,8 @@
         "cards": [
           {
             "question": "What is a tag?",
-            "answer": "An html element"
+            "answer": "An html element",
+            "notes": "html is great"
           }
         ]
       }
