@@ -7,12 +7,12 @@ const NewCollection = () => {
     <div className="m-2">
       <Form className="wholeCard">
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Enjoy your collection!!!</Form.Label>
+          <Form.Label>Add a title to your collection!!!</Form.Label>
           <Form.Control type="text" />
         </Form.Group>
         <Link to="/AddCard">
           <Button variant="primary" type="submit">
-            Create New Collection
+            Save New Collection
           </Button>
         </Link>
       </Form>

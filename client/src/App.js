@@ -11,7 +11,8 @@ import "./App.css";
 
 import Footer from "./components/Footer/Footer";
 import OffcanvasNav from "./components/Nav/Nav";
-import Card from "./components/Carousel/Carousel";
+import HomePage from "./components/HomePage/HomePage";
+import Carousel from "./components/Carousel/Carousel";
 import AddCard from "./components/AddCard/AddCard";
 import UpdateCard from "./components/UpdateCard/UpdateCard";
 import NewCollection from "./components/NewCollection/NewCollection";
@@ -49,7 +50,8 @@ function App() {
           <OffcanvasNav />
           <div className="">
             <Routes>
-              <Route path="/" element={<Card />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/Carousel" element={<Carousel />} />
               <Route path="/AddCard" element={<AddCard />} />
               <Route path="/UpdateCard" element={<UpdateCard />} />
               <Route path="/NewCollection" element={<NewCollection />} />

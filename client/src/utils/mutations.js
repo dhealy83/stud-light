@@ -22,3 +22,12 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const DELETE_USER = gql`
+  mutation deleteUser($userId: ID!) {
+    deleteUser(userId: $userId) {
+      _id
+      username
+    }
+  }
+`;
