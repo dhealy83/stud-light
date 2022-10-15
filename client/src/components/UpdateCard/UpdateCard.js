@@ -1,15 +1,10 @@
 import React, { useState, useRef } from "react";
 // All of the Bootstrap imports
 import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 
-const AddCard = () => {
+const UpdateCard = () => {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
@@ -61,7 +56,7 @@ const AddCard = () => {
             </div>
             <div className="m-2">
               <Button variant="secondary" size="lg" className="w-100">
-                Add Card
+                Update
               </Button>
             </div>
           </div>
@@ -70,4 +65,4 @@ const AddCard = () => {
     </div>
   );
 };
-export default AddCard;
+export default UpdateCard;

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 
 import {
   FaQuestion as Question,
@@ -26,6 +27,7 @@ import cardBackground from "../../assets/cardBackground.jpg";
 // import CardData from "./CardData";
 // Local css files
 import "./FlashCard.css";
+import RadioButtons from "./RadioButtons";
 
 const fakeCollection = {
   _id: "mnbvftyuiolmnbghj",
@@ -37,6 +39,7 @@ const fakeCollection = {
       question: "Question1",
       answer: "Answer1",
       notes: "these are notes.",
+      radioValue: 0,
     },
     {
       _id: "2",
@@ -44,6 +47,7 @@ const fakeCollection = {
       question: "Question2",
       answer: "Answer2",
       notes: "these are notesdfsfsdfdsfs.",
+      radioValue: 1,
     },
     {
       _id: "3",
@@ -51,6 +55,7 @@ const fakeCollection = {
       question: "Question3",
       answer: "Answer3",
       notes: "these are notsadbfdhgsxgt5678965es.",
+      radioValue: 2,
     },
   ],
 };
@@ -63,14 +68,12 @@ const FlashCarousel = () => {
     setToggle(false);
   };
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [toggle, setToggle] = useState(false);
 
-  const [radioValue, setRadioValue] = useState("1");
-
-  const radios = [
-    { name: "X", value: "1" },
-    { name: "√", value: "2" },
-  ];
   return (
     <div className="wholeCard h-100">
       <div>
@@ -80,102 +83,90 @@ const FlashCarousel = () => {
           className="card m-2 border boarder-2 boarder-secondary rounded-3"
           interval="10000000"
         >
-          {fakeCollection.cards.map((obj) => (
-            <Carousel.Item className="buttonCheckBox" key={obj._id}>
-              <Col className="d-flex justify-content-evenly mx-3">
-                <h1>card id {obj._id}</h1>
-                <ButtonGroup className="m-2 d-flex justify-content-end">
-                  {radios.map((radio, idx) => (
-                    <ToggleButton
-                      key={idx}
-                      id={`radio-${idx}`}
-                      type="radio"
-                      value={radio.value}
-                      name="radio"
-                      variant={idx % 2 ? "outline-success" : "outline-danger"}
-                      checked={radioValue === radio.value}
-                      onChange={(e) => setRadioValue(e.currentTarget.value)}
-                      size="lg"
-                    >
-                      {radio.name}
-                    </ToggleButton>
-                  ))}
-                </ButtonGroup>
-              </Col>
-              <img
-                className="d-block w-100"
-                src={cardBackground}
-                alt="First slide"
-              />
-              <Carousel.Caption className="text-dark">
-                <Container>
-                  <Col>
-                    <Row>
-                      {toggle ? (
-                        <a href="#" onClick={() => setToggle(!toggle)}>
-                          <CardIcon icon={<Question size="50" />} />
-                        </a>
-                      ) : (
-                        <a href="#" onClick={() => setToggle(!toggle)}>
-                          <CardIcon icon={<Answer size="50" />} />
-                        </a>
-                      )}
+          {fakeCollection.cards.map((obj, i) => {
+            return (
+              <Carousel.Item className="buttonCheckBox" key={obj._id}>
+                <RadioButtons key={i} index={i} />
+                <Col className="d-flex justify-content-evenly mx-3">
+                  <h1>card id {obj._id}</h1>
+                  <ButtonGroup className="m-2 d-flex justify-content-end"></ButtonGroup>
+                </Col>
+                <img
+                  className="d-block w-100"
+                  src={cardBackground}
+                  alt="First slide"
+                />
+                <Carousel.Caption className="text-dark">
+                  <Container>
+                    <Col>
+                      <Row>
+                        {toggle ? (
+                          <a href="#" onClick={() => setToggle(!toggle)}>
+                            <CardIcon icon={<Question size="50" />} />
+                          </a>
+                        ) : (
+                          <a href="#" onClick={() => setToggle(!toggle)}>
+                            <CardIcon icon={<Answer size="50" />} />
+                          </a>
+                        )}
 
-                      {/* <a href="#" onClick={() => setToggle(!toggle)}>
+                        {/* <a href="#" onClick={() => setToggle(!toggle)}>
                  <CardIcon icon={<Question size="50" />} />
                 </a> */}
-                      {toggle && (
-                        <div className="flip-horizontal-bottom">
-                          <div class="card">
-                            <div class="card-body">
-                              <p class="card-text">{obj.answer}</p>
+                        {toggle && (
+                          <div className="flip-horizontal-bottom">
+                            <div class="card">
+                              <div class="card-body">
+                                <p class="card-text">{obj.answer}</p>
+                              </div>
                             </div>
+                            <p className="text-success">"Flipped"</p>
                           </div>
-                          <p className="text-success">"Flipped"</p>
-                        </div>
-                      )}
-                      {!toggle && (
-                        <div className="flip-horizontal-bottom">
-                          <div class="card">
-                            <div class="card-body">
-                              <p class="card-text">{obj.question}</p>
+                        )}
+                        {!toggle && (
+                          <div className="flip-horizontal-bottom">
+                            <div class="card">
+                              <div class="card-body">
+                                <p class="card-text">{obj.question}</p>
+                              </div>
                             </div>
+                            <p className="text-info">"Not Flipped"</p>
                           </div>
-                          <p className="text-info">"Not Flipped"</p>
-                        </div>
-                      )}
-                    </Row>
-                  </Col>
-                </Container>
-              </Carousel.Caption>
-              {/* 
-              <FlashCard
-                key={obj._id}
-                answer={obj.answer}
-                question={obj.question}
-              /> */}
-            </Carousel.Item>
-          ))}
+                        )}
+                      </Row>
+                    </Col>
+                  </Container>
+                </Carousel.Caption>
+              </Carousel.Item>
+            );
+          })}
         </Carousel>
       </div>
       <div className="d-flex">
         <div className="col v-100">
           <Card className="m-2">
-            <Form className="bg-secondary rounded-2">
-              <Form.Group>
-                <Form.Label className="m-2 text-white">Notes</Form.Label>
-                <Form.Control as="textarea" rows={8} />
-              </Form.Group>
-            </Form>
+            <Card.Title className="bg-secondary text-white p-2 rounded-top">
+              Notes
+            </Card.Title>
+            <Card.Body>
+              <Card.Text>{fakeCollection.cards[index].notes}</Card.Text>
+            </Card.Body>
           </Card>
 
           <div className="m-2">
-            <Button variant="secondary" size="lg" className="w-100">
-              Update
-            </Button>
+            <Link to="/UpdateCard">
+              <Button variant="secondary" size="lg" className="w-100">
+                Update
+              </Button>
+            </Link>
           </div>
           <div className="m-2">
-            <Button variant="secondary" size="lg" className="w-100">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="w-100"
+              onClick={handleShow}
+            >
               Delete Card
             </Button>
           </div>
@@ -186,8 +177,29 @@ const FlashCarousel = () => {
               </Button>
             </Link>
           </div>
+          <div className="m-2 mt-auto">
+            <Link to="/NewCollection">
+              <Button variant="secondary" size="lg" className="w-100">
+                Create New Collection
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you'd like to delete this card?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Delete Card
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
