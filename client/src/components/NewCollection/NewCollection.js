@@ -23,19 +23,21 @@ const NewCollection = () => {
     const userId = JSON.parse(localStorage.getItem("userData"));
     const id = userId._id;
     console.log(id);
+    console.log(formData.title);
+
     await addCollection({
       variables: {
         userId: id,
         title: formData.title,
-        context: Auth.getProfile().data.userId,
       },
     });
+    setFormData({ title: "" });
   };
 
   return (
     <div className="m-2">
       <Form className="wholeCard" onSubmit={handleAddCollection}>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Add a title to your collection!!!</Form.Label>
           <Form.Control
             type="text"
@@ -46,15 +48,16 @@ const NewCollection = () => {
             onChange={handleChange}
           />
         </Form.Group>
-        <Link to="/AddCard">
-          <Button
-            variant="primary"
-            type="submit"
-            // onSubmit={handleAddCollection}
-          >
-            Save New Collection
-          </Button>
-        </Link>
+        <Button
+          variant="primary"
+          type="submit"
+          // onSubmit={handleAddCollection}
+        >
+          Save New Collection
+        </Button>
+        {/* <Link to="/AddCard">
+
+        </Link> */}
       </Form>
     </div>
   );

@@ -20,33 +20,6 @@ db.once("open", async () => {
     //   const currentCard = await Card.create("cards"[{}]);
     // }
 
-    // for of used for arrays
-<<<<<<< HEAD
-    for (const i of userSeeds) {
-      const currentCollection = await Collection.create(i.collections);
-      const collectionID = currentCollection.map((obj) => obj._id);
-      await User.create({
-        username: i.username,
-        email: i.email,
-        password: i.password,
-        collections: collectionID,
-      });
-    }
-=======
-    // for (const i of userSeeds) {
-    //   const currentCard = await Card.create(i.cards);
-    //   collectionCard = currentCard.map((obj) => obj._id);
-    //   const currentCollection = await Collection.create(i.collections);
-    //   const collectionID = currentCollection.map((obj) => obj._id);
-    //   await User.create({
-    //     username: i.username,
-    //     email: i.email,
-    //     password: i.password,
-    //     collections: { collectionID, cards: [collectionCard] },
-    //   });
-    // }
->>>>>>> main
-
     console.log("All seeded");
     process.exit(0);
   } catch (err) {
