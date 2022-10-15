@@ -18,19 +18,12 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_ME = gql`
-  query me {
+export const QUERY_USER_COLLECTION = gql`
+  query Query {
     me {
-      _id
       username
-      email
       collections {
-        _id
         title
-        cards {
-          question
-          answer
-        }
       }
     }
   }

@@ -3,6 +3,7 @@ import sl from "../../assets/sl.png";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import Modal from "react-bootstrap/Modal";
+import { QUERY_USER_COLLECTION } from "../../utils/queries";
 const Nav = () => {
   const [show, setShow] = useState(false);
 
@@ -66,7 +67,7 @@ const Nav = () => {
                   HTML Flashcards
                 </button>
               </h2>
-              <div
+              {/* <div
                 id="flush-FlashcardOne"
                 className="accordion-collapse collapse"
                 aria-labelledby="flush-headingOne"
@@ -256,7 +257,7 @@ const Nav = () => {
                     Test item #3
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
