@@ -23,14 +23,17 @@ const Nav = () => {
     console.log(userId._id);
     try {
       // deleteUser(userId._id);
+
       await deleteUser({
         variables: { userId: id },
+
       });
     } catch (e) {
       console.log(e);
     }
     handleClose();
   };
+
   return (
     <nav className="navbar bg-secondary fixed-top">
       <div className="headEl container justify-content-between">
