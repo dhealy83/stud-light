@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/esm/Button";
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import Logout from "./Logout";
 import SignUp from "./SignUp";
 import Donate from "./Donate";
+
 
 const Footer = () => {
   return (
@@ -16,6 +18,7 @@ const Footer = () => {
         </div>
         <div>
           <Login />
+          <Logout />
         </div>
         <div>
           <SignUp />
