@@ -21,6 +21,14 @@ const AddCard = () => {
       <div>
         <div className="d-flex">
           <div className="col v-100">
+            <div className="m-2 bg-secondary rounded-2 text-white">
+              <Form.Label className="m-2">Select Collection</Form.Label>
+              <Form.Select>
+                <option value="1">Poop Jokes</option>
+                <option value="2">Pee Pee Jokes</option>
+                <option value="3">ppwbttcl</option>
+              </Form.Select>
+            </div>
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
