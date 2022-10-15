@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { ADD_USER } from "../../utils/mutations";
+import { ADD_USER, LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import { asyncMap } from "@apollo/client/utilities";
 
 const SignUp = () => {
   const [show, setShow] = useState(false);
@@ -15,6 +16,7 @@ const SignUp = () => {
   });
 
   const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [login, { err, data1 }] = useMutation(LOGIN_USER);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -25,19 +27,32 @@ const SignUp = () => {
     });
   };
 
+  const handleUserData = async () => {
+    try {
+      const { data } = await login({
+        variables: { ...formData },
+      });
+      // console.log(data.login.user);
+      Auth.login(data.login.token, JSON.stringify(data.login.user));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
       const { data } = await addUser({
         variables: { ...formData },
       });
-      console.log(data);
+      console.log(data.user);
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
 
     handleClose();
+    handleUserData();
     setFormData({
       email: "",
       password: "",
