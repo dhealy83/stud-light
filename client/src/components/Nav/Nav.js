@@ -262,9 +262,15 @@ const Nav = () => {
           </div>
         </div>
         <div className="m-2">
-          <Button variant="secondary" onClick={handleShow} className="mb-5">
-            Delete Account
-          </Button>
+          <div>
+            <Button
+              variant="secondary"
+              onClick={handleShow}
+              className="mb-5 ms-3"
+            >
+              Delete Account
+            </Button>
+          </div>
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
