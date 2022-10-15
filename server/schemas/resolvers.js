@@ -67,26 +67,26 @@ const resolvers = {
     },
 
     // Leaving out context for now until we get authorization
-    addCollection: async (parent, { userId, title }, context) => {
-      if (context.user) {
-        console.log(context);
-        console.log(title);
-        const createCollection = await Collection.create({
-          title: title,
-        });
-        const collection = createCollection;
-        console.log(collection._id.valueOf());
+    addCollection: async (parent, { userId, title }) => {
+      // console.log(context);
+      console.log(title);
+      const createCollection = await Collection.create({
+        title: title,
+      });
+      const collection = createCollection;
+      console.log(collection._id.valueOf());
 
-        const collectionToUser = await User.findByIdAndUpdate(
-          { _id: userId },
-          { $addToSet: { collections: collection._id.valueOf() } },
-          { new: true }
-        );
+      const collectionToUser = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $addToSet: { collections: collection._id.valueOf() } },
+        { new: true }
+      );
 
-        return createCollection, collectionToUser;
-      }
+      return createCollection, collectionToUser;
+      // if (context.user) {
+      // }
 
-      throw new AuthenticationError("You need to be logged in!");
+      // throw new AuthenticationError("You need to be logged in!");
     },
 
     updateCollection: async (parent, { collectionId, title }) => {
