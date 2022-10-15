@@ -10,7 +10,7 @@ db.once("open", async () => {
   try {
     await User.deleteMany({});
     await Collection.deleteMany({});
-    await Card.deleteMany({});
+    await Collection.deleteMany({});
     // Create user
     // Create collection
     // update user so collection is attached to them
@@ -21,6 +21,18 @@ db.once("open", async () => {
     // }
 
     // for of used for arrays
+<<<<<<< HEAD
+    for (const i of userSeeds) {
+      const currentCollection = await Collection.create(i.collections);
+      const collectionID = currentCollection.map((obj) => obj._id);
+      await User.create({
+        username: i.username,
+        email: i.email,
+        password: i.password,
+        collections: collectionID,
+      });
+    }
+=======
     // for (const i of userSeeds) {
     //   const currentCard = await Card.create(i.cards);
     //   collectionCard = currentCard.map((obj) => obj._id);
@@ -33,6 +45,7 @@ db.once("open", async () => {
     //     collections: { collectionID, cards: [collectionCard] },
     //   });
     // }
+>>>>>>> main
 
     console.log("All seeded");
     process.exit(0);

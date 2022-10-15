@@ -30,3 +30,12 @@ export const DELETE_USER = gql`
     }
   }
 `;
+
+export const ADD_COLLECTION = gql`
+  mutation addCollection($userId: ID!, $title: String!) {
+    addCollection(userId: $userId, title: $title) {
+      _id
+      title
+    }
+  }
+`;
