@@ -4,11 +4,22 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import Modal from "react-bootstrap/Modal";
 import { QUERY_USER_COLLECTION } from "../../utils/queries";
+import { DELETE_USER } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 const Nav = () => {
   const [show, setShow] = useState(false);
 
+  // This handles the navbar open and close
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // This handles the delete user mutation and closes the modal
+  const [deleteUser, { error, data }] = useMutation(DELETE_USER);
+
+  const handleUserDelete = (evt) => {
+    evt.preventDefault();
+    handleClose();
+  };
 
   return (
     <nav className="navbar bg-secondary fixed-top">
@@ -283,7 +294,7 @@ const Nav = () => {
               <Button variant="secondary" onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant="primary" onClick={handleClose}>
+              <Button variant="primary" onClick={handleUserDelete}>
                 Delete Account
               </Button>
             </Modal.Footer>

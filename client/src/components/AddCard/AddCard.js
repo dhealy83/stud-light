@@ -24,24 +24,20 @@ const AddCard = () => {
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
-                  <Form.Label className="m-2 text-white">Title</Form.Label>
-                  <Form.Control as="textarea" rows={1} />
+                  <Form.Label className="m-2 text-white">
+                    Add Your Question Below
+                  </Form.Label>
+                  <Form.Control as="textarea" rows={5} placeholder="Required" />
                 </Form.Group>
               </Form>
             </Card>
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
-                  <Form.Label className="m-2 text-white">Side One</Form.Label>
-                  <Form.Control as="textarea" rows={5} />
-                </Form.Group>
-              </Form>
-            </Card>
-            <Card className="m-2">
-              <Form className="bg-secondary rounded-2">
-                <Form.Group>
-                  <Form.Label className="m-2 text-white">Side Two</Form.Label>
-                  <Form.Control as="textarea" rows={5} />
+                  <Form.Label className="m-2 text-white">
+                    Add Your Answer Below
+                  </Form.Label>
+                  <Form.Control as="textarea" rows={5} placeholder="Required" />
                 </Form.Group>
               </Form>
             </Card>
@@ -49,7 +45,11 @@ const AddCard = () => {
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
                   <Form.Label className="m-2 text-white">Notes</Form.Label>
-                  <Form.Control as="textarea" rows={5} />
+                  <Form.Control
+                    as="textarea"
+                    rows={5}
+                    placeholder="Optional text here..."
+                  />
                 </Form.Group>
               </Form>
             </Card>
