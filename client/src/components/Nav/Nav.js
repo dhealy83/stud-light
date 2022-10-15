@@ -23,9 +23,10 @@ const Nav = () => {
     console.log(userId._id);
     try {
       // deleteUser(userId._id);
-      const { data } = await deleteUser({
-        query: DELETE_USER,
-        variable: { userId: "user" },
+
+      await deleteUser({
+        variables: { userId: id },
+
       });
     } catch (e) {
       console.log(e);
