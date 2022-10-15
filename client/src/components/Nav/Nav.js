@@ -262,7 +262,7 @@ const Nav = () => {
           </div>
         </div>
         <div className="m-2">
-          <Button variant="secondary" onClick={handleShow}>
+          <Button variant="secondary" onClick={handleShow} className="mb-5">
             Delete Account
           </Button>
 
