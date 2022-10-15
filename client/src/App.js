@@ -14,6 +14,7 @@ import OffcanvasNav from "./components/Nav/Nav";
 import Card from "./components/Carousel/Carousel";
 import AddCard from "./components/AddCard/AddCard";
 import UpdateCard from "./components/UpdateCard/UpdateCard";
+import NewCollection from "./components/NewCollection/NewCollection";
 // import Footer from "./components/Footer";
 
 // Construct our main GraphQL API endpoint
@@ -51,6 +52,7 @@ function App() {
               <Route path="/" element={<Card />} />
               <Route path="/AddCard" element={<AddCard />} />
               <Route path="/UpdateCard" element={<UpdateCard />} />
+              <Route path="/NewCollection" element={<NewCollection />} />
             </Routes>
           </div>
           <Footer />

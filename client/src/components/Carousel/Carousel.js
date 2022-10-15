@@ -177,6 +177,13 @@ const FlashCarousel = () => {
               </Button>
             </Link>
           </div>
+          <div className="m-2 mt-auto">
+            <Link to="/NewCollection">
+              <Button variant="secondary" size="lg" className="w-100">
+                Create New Collection
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
       <Modal show={show} onHide={handleClose}>

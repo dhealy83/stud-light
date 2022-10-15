@@ -6,7 +6,6 @@ import Logout from "./Logout";
 import SignUp from "./SignUp";
 import Donate from "./Donate";
 
-
 const Footer = () => {
   return (
     <nav className="navbar bg-secondary d-flex fixed-bottom">
@@ -18,6 +17,8 @@ const Footer = () => {
         </div>
         <div>
           <Login />
+        </div>
+        <div>
           <Logout />
         </div>
         <div>
