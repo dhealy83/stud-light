@@ -34,37 +34,6 @@ import cardBackground from "../../assets/cardBackground.jpg";
 import "./FlashCard.css";
 import RadioButtons from "./RadioButtons";
 
-// const fakeCollection = {
-//   _id: "mnbvftyuiolmnbghj",
-//   title: "test data",
-//   cards: [
-//     {
-//       _id: "1",
-//       title: "Title1",
-//       question: "Question1",
-//       answer: "Answer1",
-//       notes: "these are notes.",
-//       radioValue: 0,
-//     },
-//     {
-//       _id: "2",
-//       title: "Title2",
-//       question: "Question2",
-//       answer: "Answer2",
-//       notes: "these are notesdfsfsdfdsfs.",
-//       radioValue: 1,
-//     },
-//     {
-//       _id: "3",
-//       title: "Title3",
-//       question: "Question3",
-//       answer: "Answer3",
-//       notes: "these are notsadbfdhgsxgt5678965es.",
-//       radioValue: 2,
-//     },
-//   ],
-// };
-
 const FlashCarousel = () => {
   const [index, setIndex] = useState(0);
  
@@ -89,18 +58,9 @@ const FlashCarousel = () => {
     []
   );
   if (loading) return "Loading";
-  console.log(data);
+  // console.log(data);
   const collectionTitle = data.collection.title;
 
-  // const cardMap = data.collections.cards.map((card) => {
-  //   let id = card._id;
-  //   let question = card.question;
-  //   let answer = card.answer;
-  //   let notes = card.notes;
-  //   // return (
-      
-  //   // )
-  // })
 
   return (
     <>
@@ -179,7 +139,8 @@ const FlashCarousel = () => {
                 Notes
               </Card.Title>
               <Card.Body>
-                {/* <Card.Text>{fakeCollection.cards[index].notes}</Card.Text> */}
+                {/* notes are currently hardcoded to grab the notes of the second card in the array */}
+                <Card.Text>{data.collection.cards[1].notes}</Card.Text>
               </Card.Body>
             </Card>
 
