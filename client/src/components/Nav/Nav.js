@@ -10,6 +10,7 @@ import Auth from "../../utils/auth";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
+  const [index, setIndex] = useState("");
 
   // This handles the navbar open and close
   const handleClose = () => setShow(false);
@@ -20,6 +21,12 @@ const Nav = () => {
 
   // This handles the delete user mutation and closes the modal
   const [deleteUser, { error, data }] = useMutation(DELETE_USER);
+
+  const gotToUserCollection = () => {
+    // when the button is pressed we want to navigate to the carsouel page
+    // The page need to render the collection card associated with the button the user presses
+    console.log("Clicked");
+  };
 
   const dat = JSON.parse(localStorage.getItem("userCollections"));
   // console.log(dat);
@@ -38,6 +45,7 @@ const Nav = () => {
             data-bs-target="#flush-FlashcardOne"
             aria-expanded="false"
             aria-controls="flush-FlashcardOne"
+            onClick={gotToUserCollection}
           >
             {title}
           </button>
@@ -119,27 +127,11 @@ const Nav = () => {
               size="lg"
               className="w-100"
               onClick={handleExpanded}
-
-              // onClick={navigate("/NewCollection")} this
             >
               Create New Collection
             </Button>
           </div>
           <div className="accordion accordion-flush" id="menu">
-            {/* <div className="accordion-item">
-              <h2 className="accordion-header" id="flush-headingOne">
-                <button
-                  className="accordion-button collapsed bg-light"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-FlashcardOne"
-                  aria-expanded="false"
-                  aria-controls="flush-FlashcardOne"
-                >
-                  HTML Flashcards
-                </button>
-              </h2>
-            </div> */}
             {mapCollections}
           </div>
         </div>
