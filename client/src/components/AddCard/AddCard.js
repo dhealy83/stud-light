@@ -28,7 +28,6 @@ const AddCard = () => {
   );
   if (loading) return "Loading";
   console.log(data);
-  // const userCollections = data.user.collections;
   localStorage.setItem("userCollections", JSON.stringify(data));
 
   const userCollections = data.user.collections;
