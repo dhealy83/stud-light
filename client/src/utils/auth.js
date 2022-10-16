@@ -30,13 +30,13 @@ class AuthService {
   login(idToken, userData) {
     localStorage.setItem("id_token", idToken);
     localStorage.setItem("userData", userData);
-    window.location.assign("/");
+    window.location.assign("/home");
   }
 
   logout() {
     localStorage.removeItem("userData");
     localStorage.removeItem("id_token");
-    window.location.reload();
+    window.location.assign("/");
   }
 }
 
