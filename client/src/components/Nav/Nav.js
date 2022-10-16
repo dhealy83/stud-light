@@ -54,7 +54,6 @@ const Nav = () => {
             data-bs-target="#offcanvasExample"
             aria-controls="offcanvasExample"
             fixed="bottom"
-            onClick={handleExpanded}
           >
             <img src={sl} alt="Bootstrap" width="30" height="30" />
           </button>
