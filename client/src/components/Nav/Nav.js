@@ -7,6 +7,7 @@ import { QUERY_USER_COLLECTION } from "../../utils/queries";
 import { DELETE_USER } from "../../utils/mutations";
 import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
+import "./Nav.css";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
@@ -29,8 +30,10 @@ const Nav = () => {
 
     localStorage.setItem("currentCollection", index);
 
-    // navigate("/Carousel");
+
+    navigate("/Carousel");
   };
+
   let mapCollections = [];
 
   if (localStorage.getItem("userCollections") === null) {
@@ -49,7 +52,8 @@ const Nav = () => {
               className="accordion-button collapsed bg-light"
               type="button"
               id={id}
-              // data-bs-toggle="offcanvas"
+
+              data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasExample"
               aria-controls="offcanvasExample"
               onClick={gotToUserCollection}
@@ -144,11 +148,11 @@ const Nav = () => {
           </div>
         </div>
         <div className="m-2">
-          <div>
+          <div className="mb-5">
             <Button
               variant="secondary"
               onClick={handleShow}
-              className="mb-5 ms-3"
+              className="deleteUser"
             >
               Delete Account
             </Button>

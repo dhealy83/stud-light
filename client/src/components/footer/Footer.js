@@ -15,14 +15,9 @@ const Footer = () => {
         <div>
           <Donate />
         </div>
-        <div>
-          <Login />
-        </div>
+        <div>Check us out @ github</div>
         <div>
           <Logout />
-        </div>
-        <div>
-          <SignUp />
         </div>
       </div>
     </nav>

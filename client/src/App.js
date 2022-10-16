@@ -17,8 +17,6 @@ import UpdateCard from "./components/UpdateCard/UpdateCard";
 import NewCollection from "./components/NewCollection/NewCollection";
 import Footer from "./components/Footer/Footer";
 import Nav from "./components/Nav/Nav";
-import WithNav from "./components/Nav/WithNav";
-import WithoutNav from "./components/Nav/WithoutNav";
 
 import LandingPage from "./components/Pages/LandingPage";
 import Auth from "./utils/auth";
@@ -71,7 +69,6 @@ const App = () => {
           <Footer />
         </div>
       )}
-      ;
     </ApolloProvider>
   );
 };
