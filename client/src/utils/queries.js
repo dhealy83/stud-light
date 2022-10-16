@@ -19,11 +19,12 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_USER_COLLECTION = gql`
-  query Query {
-    me {
-      username
+  query User($userId: ID!) {
+    user(userId: $userId) {
+      _id
       collections {
         title
+        _id
       }
     }
   }

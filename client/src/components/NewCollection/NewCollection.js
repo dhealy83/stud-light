@@ -22,8 +22,6 @@ const NewCollection = () => {
     evt.preventDefault();
     const userId = JSON.parse(localStorage.getItem("userData"));
     const id = userId._id;
-    console.log(id);
-    console.log(formData.title);
 
     await addCollection({
       variables: {
