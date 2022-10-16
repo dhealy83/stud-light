@@ -12,6 +12,8 @@ import { QUERY_USER_COLLECTION } from "../../utils/queries";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import OffcanvasNav from "../Nav/Nav";
+import Footer from "../Footer/Footer";
 
 const AddCard = () => {
   const [index, setIndex] = useState([]);
@@ -53,9 +55,7 @@ const AddCard = () => {
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
-                  <Form.Label className="m-2 text-white">
-                    Add Your Question Below
-                  </Form.Label>
+                  <Form.Label className="m-2 text-white">Add Your Question Below</Form.Label>
                   <Form.Control as="textarea" rows={5} placeholder="Required" />
                 </Form.Group>
               </Form>
@@ -63,9 +63,7 @@ const AddCard = () => {
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
-                  <Form.Label className="m-2 text-white">
-                    Add Your Answer Below
-                  </Form.Label>
+                  <Form.Label className="m-2 text-white">Add Your Answer Below</Form.Label>
                   <Form.Control as="textarea" rows={5} placeholder="Required" />
                 </Form.Group>
               </Form>
@@ -74,11 +72,7 @@ const AddCard = () => {
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
                   <Form.Label className="m-2 text-white">Notes</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={5}
-                    placeholder="Optional text here..."
-                  />
+                  <Form.Control as="textarea" rows={5} placeholder="Optional text here..." />
                 </Form.Group>
               </Form>
             </Card>
