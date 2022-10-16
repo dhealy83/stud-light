@@ -38,6 +38,7 @@ const NewCollection = () => {
   };
 
   return (
+
     <div className="m-2">
       <Form className="wholeCard" onSubmit={handleAddCollection}>
         <Form.Group className="mb-3">
@@ -56,6 +57,7 @@ const NewCollection = () => {
         </Button>
       </Form>
     </div>
+
   );
 };
 

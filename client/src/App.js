@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { Routes, Route } from "react-router-dom";
@@ -9,6 +9,11 @@ import Carousel from "./components/Carousel/Carousel";
 import AddCard from "./components/AddCard/AddCard";
 import UpdateCard from "./components/UpdateCard/UpdateCard";
 import NewCollection from "./components/NewCollection/NewCollection";
+import Footer from "./components/Footer/Footer";
+import Nav from "./components/Nav/Nav";
+import WithNav from "./components/Nav/WithNav";
+import WithoutNav from "./components/Nav/WithoutNav";
+
 import LandingPage from "./components/Pages/LandingPage";
 import Auth from "./utils/auth";
 
@@ -36,30 +41,33 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
-  // const checkLogin = async (e) => {
-  //   e.preventDefault();
-  //   Auth.loggedIn();
-  // };
+const App = () => {
+  const [showNav, setShowNav] = useState(true);
+
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh overflow-auto">
+      {showNav && (
         <div>
-          <Routes>
-            <Route exact path="/" element={<LandingPage />} />
-            {/* {Auth.loggedIn() ? <LandingPage /> : <Redirect to="/home" />} */}
-            {/* </Route> */}
-
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/Carousel" element={<Carousel />} />
-            <Route path="/AddCard" element={<AddCard />} />
-            <Route path="/UpdateCard" element={<UpdateCard />} />
-            <Route path="/NewCollection" element={<NewCollection />} />
-          </Routes>
+          <Nav />
         </div>
-      </div>
+      )}
+      <Routes>
+        <Route index element={<LandingPage funcNav={setShowNav} />} />
+
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/Carousel" element={<Carousel />} />
+        <Route path="/AddCard" element={<AddCard />} />
+        <Route path="/UpdateCard" element={<UpdateCard />} />
+        <Route path="/NewCollection" element={<NewCollection />} />
+      </Routes>
+      {showNav && (
+        <div>
+          <Footer />
+        </div>
+      )}
+      ;
     </ApolloProvider>
   );
-}
+};
 
 export default App;
