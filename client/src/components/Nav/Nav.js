@@ -6,6 +6,8 @@ import Modal from "react-bootstrap/Modal";
 import { QUERY_USER_COLLECTION } from "../../utils/queries";
 import { DELETE_USER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
+import Auth from "../../utils/auth";
+
 const Nav = () => {
   const [show, setShow] = useState(false);
 
@@ -34,15 +36,15 @@ const Nav = () => {
       console.log(e);
     }
     handleClose();
+    Auth.logout();
   };
 
-  const [expanded, setExpanded] = useState(false);
   const handleExpanded = () => {
-    setExpanded(expanded ? false : "expanded");
+    navigate("/NewCollection");
   };
 
   return (
-    <nav className="navbar bg-secondary fixed-top" expanded={expanded}>
+    <nav className="navbar bg-secondary fixed-top">
       <div className="headEl container justify-content-between">
         <div className="">
           <button
@@ -52,7 +54,7 @@ const Nav = () => {
             data-bs-target="#offcanvasExample"
             aria-controls="offcanvasExample"
             fixed="bottom"
-            // onClick={handleExpanded}
+            onClick={handleExpanded}
           >
             <img src={sl} alt="Bootstrap" width="30" height="30" />
           </button>
@@ -87,10 +89,12 @@ const Nav = () => {
           <h6>Navigate your flashcard categories here.</h6>
           <div className="m-3 mx-5">
             <Button
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
               variant="info"
               size="lg"
               className="w-100"
-              onClick={() => setExpanded(false)}
+              onClick={handleExpanded}
 
               // onClick={navigate("/NewCollection")} this
             >
