@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import { QUERY_SINGLE_COLLECTION } from "../../utils/queries";
 
 import {
   FaQuestion as Question,
@@ -31,40 +34,9 @@ import cardBackground from "../../assets/cardBackground.jpg";
 import "./FlashCard.css";
 import RadioButtons from "./RadioButtons";
 
-const fakeCollection = {
-  _id: "mnbvftyuiolmnbghj",
-  title: "test data",
-  cards: [
-    {
-      _id: "1",
-      title: "Title1",
-      question: "Question1",
-      answer: "Answer1",
-      notes: "these are notes.",
-      radioValue: 0,
-    },
-    {
-      _id: "2",
-      title: "Title2",
-      question: "Question2",
-      answer: "Answer2",
-      notes: "these are notesdfsfsdfdsfs.",
-      radioValue: 1,
-    },
-    {
-      _id: "3",
-      title: "Title3",
-      question: "Question3",
-      answer: "Answer3",
-      notes: "these are notsadbfdhgsxgt5678965es.",
-      radioValue: 2,
-    },
-  ],
-};
-
 const FlashCarousel = () => {
   const [index, setIndex] = useState(0);
-
+ 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
     setToggle(false);
@@ -75,6 +47,20 @@ const FlashCarousel = () => {
   const handleShow = () => setShow(true);
 
   const [toggle, setToggle] = useState(false);
+
+  const collectionId = localStorage.getItem("currentCollection");
+
+  const { loading, data, error } = useQuery(
+    QUERY_SINGLE_COLLECTION,
+    {
+      variables: { collectionId: collectionId },
+    },
+    []
+  );
+  if (loading) return "Loading";
+  // console.log(data);
+  const collectionTitle = data.collection.title;
+
 
   return (
     <>
@@ -87,12 +73,12 @@ const FlashCarousel = () => {
             className="card m-2 border boarder-2 boarder-secondary rounded-3"
             interval="10000000"
           >
-            {fakeCollection.cards.map((obj, i) => {
+            {data.collection.cards.map((obj, i) => {
               return (
                 <Carousel.Item className="buttonCheckBox" key={obj._id}>
                   <RadioButtons key={i} index={i} />
                   <Col className="d-flex justify-content-evenly mx-3">
-                    <h1>card id {obj._id}</h1>
+                    <h1>{collectionTitle}</h1>
                     <ButtonGroup className="m-2 d-flex justify-content-end"></ButtonGroup>
                   </Col>
                   <img
@@ -153,7 +139,8 @@ const FlashCarousel = () => {
                 Notes
               </Card.Title>
               <Card.Body>
-                <Card.Text>{fakeCollection.cards[index].notes}</Card.Text>
+                {/* notes are currently hardcoded to grab the notes of the second card in the array */}
+                <Card.Text>{data.collection.cards[1].notes}</Card.Text>
               </Card.Body>
             </Card>
 
