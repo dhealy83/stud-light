@@ -1,22 +1,16 @@
 import React from "react";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import Footer from "./components/Footer/Footer";
-import OffcanvasNav from "./components/Nav/Nav";
 import HomePage from "./components/HomePage/HomePage";
 import Carousel from "./components/Carousel/Carousel";
 import AddCard from "./components/AddCard/AddCard";
 import UpdateCard from "./components/UpdateCard/UpdateCard";
 import NewCollection from "./components/NewCollection/NewCollection";
-// import Footer from "./components/Footer";
+import LandingPage from "./components/Pages/LandingPage";
+import Auth from "./utils/auth";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -43,23 +37,27 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // const checkLogin = async (e) => {
+  //   e.preventDefault();
+  //   Auth.loggedIn();
+  // };
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh overflow-auto">
-          <OffcanvasNav />
-          <div className="">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/Carousel" element={<Carousel />} />
-              <Route path="/AddCard" element={<AddCard />} />
-              <Route path="/UpdateCard" element={<UpdateCard />} />
-              <Route path="/NewCollection" element={<NewCollection />} />
-            </Routes>
-          </div>
-          <Footer />
+      <div className="flex-column justify-flex-start min-100-vh overflow-auto">
+        <div>
+          <Routes>
+            <Route exact path="/" element={<LandingPage />} />
+            {/* {Auth.loggedIn() ? <LandingPage /> : <Redirect to="/home" />} */}
+            {/* </Route> */}
+
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/Carousel" element={<Carousel />} />
+            <Route path="/AddCard" element={<AddCard />} />
+            <Route path="/UpdateCard" element={<UpdateCard />} />
+            <Route path="/NewCollection" element={<NewCollection />} />
+          </Routes>
         </div>
-      </Router>
+      </div>
     </ApolloProvider>
   );
 }

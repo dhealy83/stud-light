@@ -53,25 +53,11 @@ const Login = () => {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-                value={formData.email}
-                onChange={handleChange}
-              />
+              <Form.Control name="email" type="email" placeholder="name@example.com" autoFocus value={formData.email} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Password</Form.Label>
-              <Form.Control
-                name="password"
-                type="password"
-                placeholder="password"
-                autoFocus
-                value={formData.password}
-                onChange={handleChange}
-              />
+              <Form.Control name="password" type="password" placeholder="password" autoFocus value={formData.password} onChange={handleChange} />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
