@@ -42,35 +42,27 @@ const LandingPage = (props) => {
       <div className="row">
         <header id="splash" className="bg-dark col">
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
         </header>

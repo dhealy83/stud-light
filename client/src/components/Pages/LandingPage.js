@@ -10,12 +10,6 @@ import { useNavigate } from "react-router-dom";
 const LandingPage = (props) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
-  const navigate = useNavigate();
-
-  const mytoken = Auth.getToken();
-  if (mytoken !== null) {
-    navigate("/home");
-  }
 
   props.funcNav(false);
 
@@ -27,7 +21,7 @@ const LandingPage = (props) => {
       [name]: value,
     });
   };
-
+  const navigate = useNavigate();
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
@@ -46,46 +40,39 @@ const LandingPage = (props) => {
     });
     navigate("/home", { replace: true });
   };
+
   return (
-    <div className=" container-fluid bg-secondary px-0">
-      <div className="row min-vh-100">
-        <header id="splash" className="bg-dark col">
+    <div className=" container-fluid bg-secondary h-100 overflow-hidden">
+      <div className="row vh-100">
+        <header id="splash" className="bg-dark ">
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
           <h1 className="staatliches fs-1 text-center text-light">
-            {" "}
             Stud Light
           </h1>
         </header>
-        <div className="bg-secondary col-12 container">
-          <section className="row justify-content-between">
-            <div className="col-4 align-self-start ms-2 ">
+        <div className="bg-secondary">
+          <section className="row m-3 justify-content-between">
+            <div className="col-4  ">
               <h1 className="staatliches fs-1 text-start text-dark">
                 Stud Light
               </h1>
@@ -94,8 +81,11 @@ const LandingPage = (props) => {
                 continually study.
               </h6>
             </div>
-            <Form onSubmit={handleSubmit} className="col-4 me-2 align-self-end">
-              <Form.Group className="mb-3">
+            <Form
+              onSubmit={handleSubmit}
+              className="col-6 col-lg-3 col-md-4 col-xxl-2 me-2 align-self-end"
+            >
+              <Form.Group className="my-3">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   name="email"
@@ -106,7 +96,7 @@ const LandingPage = (props) => {
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="my-3">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   name="password"
@@ -118,10 +108,18 @@ const LandingPage = (props) => {
                 />
               </Form.Group>
               <div>
-                <Button type="submit" variant="danger" className="m-3">
-                  Login
-                </Button>
-                <SignUp />
+                <div className="">
+                  <Button
+                    type="submit"
+                    variant="danger"
+                    className="loginButton w-100 my-3"
+                  >
+                    Login
+                  </Button>
+                </div>
+                <div>
+                  <SignUp />
+                </div>
               </div>
             </Form>
           </section>
