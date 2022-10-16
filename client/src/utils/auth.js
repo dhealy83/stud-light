@@ -36,6 +36,7 @@ class AuthService {
   logout() {
     localStorage.removeItem("userData");
     localStorage.removeItem("id_token");
+    localStorage.removeItem("userCollections");
     window.location.assign("/");
   }
 }

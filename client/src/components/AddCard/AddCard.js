@@ -24,7 +24,7 @@ const AddCard = () => {
   });
 
   //            *error  *data
-  const[addCard, { err, dat }] = useMutation(ADD_CARD);
+  const [addCard, { err, dat }] = useMutation(ADD_CARD);
 
   const userId = JSON.parse(localStorage.getItem("userData"));
   const id = userId._id;
@@ -41,7 +41,7 @@ const AddCard = () => {
   localStorage.setItem("userCollections", JSON.stringify(data));
 
   const userCollections = data.user.collections;
-  // const collectionId = 
+  // const collectionId =
   console.log(data.user.collections._id);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -54,14 +54,11 @@ const AddCard = () => {
       ...formData,
       [name]: value,
     });
-  }
-    
-  
+  };
+
   const handleAddCard = async (evt) => {
     evt.preventDefault();
-   
-    
-   
+
     await addCard({
       variables: {
         collectionId: "634b7262aa6028dc19fc7c2b",
@@ -90,16 +87,34 @@ const AddCard = () => {
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
-                  <Form.Label className="m-2 text-white">Add Your Question Below</Form.Label>
-                  <Form.Control as="textarea" name="question" onChange={handleChange} value={formData.question} rows={5} placeholder="Required" />
+                  <Form.Label className="m-2 text-white">
+                    Add Your Question Below
+                  </Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    name="question"
+                    onChange={handleChange}
+                    value={formData.question}
+                    rows={5}
+                    placeholder="Required"
+                  />
                 </Form.Group>
               </Form>
             </Card>
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
-                  <Form.Label className="m-2 text-white">Add Your Answer Below</Form.Label>
-                  <Form.Control as="textarea" name="answer" onChange={handleChange} value={formData.answer} rows={5} placeholder="Required" />
+                  <Form.Label className="m-2 text-white">
+                    Add Your Answer Below
+                  </Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    name="answer"
+                    onChange={handleChange}
+                    value={formData.answer}
+                    rows={5}
+                    placeholder="Required"
+                  />
                 </Form.Group>
               </Form>
             </Card>
@@ -107,7 +122,14 @@ const AddCard = () => {
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
                   <Form.Label className="m-2 text-white">Notes</Form.Label>
-                  <Form.Control as="textarea" name="notes" onChange={handleChange} value={formData.notes} rows={5} placeholder="Optional text here..." />
+                  <Form.Control
+                    as="textarea"
+                    name="notes"
+                    onChange={handleChange}
+                    value={formData.notes}
+                    rows={5}
+                    placeholder="Optional text here..."
+                  />
                 </Form.Group>
               </Form>
             </Card>
@@ -118,15 +140,19 @@ const AddCard = () => {
               </Form.Group>
             </div> */}
             <div className="m-2">
-              <Button variant="secondary" type="submit" size="lg" className="w-100">
+              <Button
+                variant="secondary"
+                type="submit"
+                size="lg"
+                className="w-100"
+              >
                 Add Card
               </Button>
             </div>
           </Form>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 export default AddCard;
