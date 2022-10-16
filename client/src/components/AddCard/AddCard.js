@@ -14,6 +14,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import OffcanvasNav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const AddCard = () => {
   const [index, setIndex] = useState("");
@@ -23,6 +24,7 @@ const AddCard = () => {
     notes: "",
   });
 
+  const navigate = useNavigate();
   //            *error  *data
   const [addCard, { err, dat }] = useMutation(ADD_CARD);
 
@@ -162,6 +164,7 @@ const AddCard = () => {
                 type="submit"
                 size="lg"
                 className="w-100"
+                onClick={navigate("/home")}
               >
                 Finish Adding To Collection
               </Button>
