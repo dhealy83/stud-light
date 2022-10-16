@@ -16,7 +16,7 @@ import OffcanvasNav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 
 const AddCard = () => {
-  const [index, setIndex] = useState([]);
+  const [index, setIndex] = useState("");
   const [formData, setFormData] = useState({
     question: "",
     answer: "",
@@ -37,19 +37,16 @@ const AddCard = () => {
     []
   );
   if (loading) return "Loading";
-  console.log(data);
+  // console.log(data);
   localStorage.setItem("userCollections", JSON.stringify(data));
 
   const userCollections = data.user.collections;
   // const collectionId =
-  console.log(data.user.collections._id);
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
+  // console.log(data.user.collections._id);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
-    console.log(value);
+    // console.log(value);
     setFormData({
       ...formData,
       [name]: value,
@@ -61,12 +58,14 @@ const AddCard = () => {
 
     await addCard({
       variables: {
-        collectionId: "634b7262aa6028dc19fc7c2b",
+        collectionId: index,
         question: formData.question,
         answer: formData.answer,
         notes: formData.notes,
       },
     });
+
+    setFormData({ question: "", answer: "", notes: "" });
   };
 
   const optionMap = userCollections.map((s) => {
@@ -75,6 +74,12 @@ const AddCard = () => {
     return <option value={id}>{title}</option>;
   });
 
+  const handeCollectionChoice = async (evt) => {
+    // console.log(evt.target.value);
+    setIndex(evt.target.value);
+    console.log(index);
+  };
+
   return (
     <div className="mb-5 h-100 wholeCard">
       <div>
@@ -82,7 +87,9 @@ const AddCard = () => {
           <Form className="col v-100" onSubmit={handleAddCard}>
             <div className="m-2 bg-secondary rounded-2 text-white">
               <Form.Label className="m-2">Select Collection</Form.Label>
-              <Form.Select>{optionMap}</Form.Select>
+              <Form.Select onChange={handeCollectionChoice}>
+                {optionMap}
+              </Form.Select>
             </div>
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
