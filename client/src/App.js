@@ -1,9 +1,15 @@
 import { React, useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { Routes, Route } from "react-router-dom";
+import { Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
+// import Footer from "./components/Footer/Footer";
 import HomePage from "./components/HomePage/HomePage";
 import Carousel from "./components/Carousel/Carousel";
 import AddCard from "./components/AddCard/AddCard";
