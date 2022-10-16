@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import { QUERY_SINGLE_COLLECTION } from "../../utils/queries";
 
 import {
   FaQuestion as Question,
@@ -31,40 +34,9 @@ import cardBackground from "../../assets/cardBackground.jpg";
 import "./FlashCard.css";
 import RadioButtons from "./RadioButtons";
 
-const fakeCollection = {
-  _id: "mnbvftyuiolmnbghj",
-  title: "test data",
-  cards: [
-    {
-      _id: "1",
-      title: "Title1",
-      question: "Question1",
-      answer: "Answer1",
-      notes: "these are notes.",
-      radioValue: 0,
-    },
-    {
-      _id: "2",
-      title: "Title2",
-      question: "Question2",
-      answer: "Answer2",
-      notes: "these are notesdfsfsdfdsfs.",
-      radioValue: 1,
-    },
-    {
-      _id: "3",
-      title: "Title3",
-      question: "Question3",
-      answer: "Answer3",
-      notes: "these are notsadbfdhgsxgt5678965es.",
-      radioValue: 2,
-    },
-  ],
-};
-
 const FlashCarousel = () => {
   const [index, setIndex] = useState(0);
-
+ 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
     setToggle(false);
@@ -76,9 +48,24 @@ const FlashCarousel = () => {
 
   const [toggle, setToggle] = useState(false);
 
+  const collectionId = localStorage.getItem("currentCollection");
+
+  const { loading, data, error } = useQuery(
+    QUERY_SINGLE_COLLECTION,
+    {
+      variables: { collectionId: collectionId },
+    },
+    []
+  );
+  if (loading) return "Loading";
+  // console.log(data);
+  const collectionTitle = data.collection.title;
+
+
   return (
     <>
       <OffcanvasNav />
+<<<<<<< HEAD
       <div className="d-flex justify-content-center">
         <div className="wholeCard h-75">
           <div className="">
@@ -114,6 +101,42 @@ const FlashCarousel = () => {
                                 <CardIcon icon={<Answer size="50" />} />
                               </a>
                             )}
+=======
+      <div className="wholeCard h-100">
+        <div>
+          <Carousel
+            activeIndex={index}
+            onSelect={handleSelect}
+            className="card m-2 border boarder-2 boarder-secondary rounded-3"
+            interval="10000000"
+          >
+            {data.collection.cards.map((obj, i) => {
+              return (
+                <Carousel.Item className="buttonCheckBox" key={obj._id}>
+                  <RadioButtons key={i} index={i} />
+                  <Col className="d-flex justify-content-evenly mx-3">
+                    <h1>{collectionTitle}</h1>
+                    <ButtonGroup className="m-2 d-flex justify-content-end"></ButtonGroup>
+                  </Col>
+                  <img
+                    className="d-block w-100"
+                    src={cardBackground}
+                    alt="First slide"
+                  />
+                  <Carousel.Caption className="text-dark">
+                    <Container>
+                      <Col>
+                        <Row>
+                          {toggle ? (
+                            <a href="#" onClick={() => setToggle(!toggle)}>
+                              <CardIcon icon={<Question size="50" />} />
+                            </a>
+                          ) : (
+                            <a href="#" onClick={() => setToggle(!toggle)}>
+                              <CardIcon icon={<Answer size="50" />} />
+                            </a>
+                          )}
+>>>>>>> main
 
                             {/* <a href="#" onClick={() => setToggle(!toggle)}>
                  <CardIcon icon={<Question size="50" />} />
@@ -137,6 +160,7 @@ const FlashCarousel = () => {
                                 </div>
                                 <p className="text-info">"Not Flipped"</p>
                               </div>
+<<<<<<< HEAD
                             )}
                           </Row>
                         </Col>
@@ -157,6 +181,31 @@ const FlashCarousel = () => {
                   <Card.Text>{fakeCollection.cards[index].notes}</Card.Text>
                 </Card.Body>
               </Card>
+=======
+                              <p className="text-info">"Not Flipped"</p>
+                            </div>
+                          )}
+                        </Row>
+                      </Col>
+                    </Container>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              );
+            })}
+          </Carousel>
+        </div>
+        <div className="d-flex">
+          <div className="col v-100">
+            <Card className="m-2">
+              <Card.Title className="bg-secondary text-white p-2 rounded-top">
+                Notes
+              </Card.Title>
+              <Card.Body>
+                {/* notes are currently hardcoded to grab the notes of the second card in the array */}
+                <Card.Text>{data.collection.cards[1].notes}</Card.Text>
+              </Card.Body>
+            </Card>
+>>>>>>> main
 
               <div className="m-2 mt-auto">
                 <Link to="/UpdateCard">
