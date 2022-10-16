@@ -35,24 +35,28 @@ const NewCollection = () => {
   };
 
   return (
-    <div className="m-2">
-      <Form className="wholeCard" onSubmit={handleAddCollection}>
-        <Form.Group className="mb-3">
-          <Form.Label>Add a title to your collection!!!</Form.Label>
-          <Form.Control type="text" name="title" placeholder="Add collection title here" autoFocus value={formData.title} onChange={handleChange} />
-        </Form.Group>
-        <Button
-          variant="primary"
-          type="submit"
-          // onSubmit={handleAddCollection}
-        >
-          Save New Collection
-        </Button>
-        {/* <Link to="/AddCard">
+    <>
+      <OffcanvasNav />
+      <div className="m-2">
+        <Form className="wholeCard" onSubmit={handleAddCollection}>
+          <Form.Group className="mb-3">
+            <Form.Label>Add a title to your collection!!!</Form.Label>
+            <Form.Control type="text" name="title" placeholder="Add collection title here" autoFocus value={formData.title} onChange={handleChange} />
+          </Form.Group>
+          <Button
+            variant="primary"
+            type="submit"
+            // onSubmit={handleAddCollection}
+          >
+            Save New Collection
+          </Button>
+          {/* <Link to="/AddCard">
 
         </Link> */}
-      </Form>
-    </div>
+        </Form>
+      </div>
+      <Footer />
+    </>
   );
 };
 

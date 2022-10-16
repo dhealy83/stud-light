@@ -1,16 +1,9 @@
 import { React, useState } from "react";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import LandingPage from "./components/LandingPage/LandingPage";
-// import Footer from "./components/Footer/Footer";
 import HomePage from "./components/HomePage/HomePage";
 import Carousel from "./components/Carousel/Carousel";
 import AddCard from "./components/AddCard/AddCard";
@@ -53,27 +46,25 @@ const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <Router>
-        {showNav && (
-          <div>
-            <Nav />
-          </div>
-        )}
-        <Routes>
-          <Route index element={<LandingPage funcNav={setShowNav} />} />
+      {showNav && (
+        <div>
+          <Nav />
+        </div>
+      )}
+      <Routes>
+        <Route index element={<LandingPage funcNav={setShowNav} />} />
 
-          <Route path="/HomePage" element={<HomePage />} />
-          <Route path="/Carousel" element={<Carousel />} />
-          <Route path="/AddCard" element={<AddCard />} />
-          <Route path="/UpdateCard" element={<UpdateCard />} />
-          <Route path="/NewCollection" element={<NewCollection />} />
-        </Routes>
-        {showNav && (
-          <div>
-            <Footer />
-          </div>
-        )}
-      </Router>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/Carousel" element={<Carousel />} />
+        <Route path="/AddCard" element={<AddCard />} />
+        <Route path="/UpdateCard" element={<UpdateCard />} />
+        <Route path="/NewCollection" element={<NewCollection />} />
+      </Routes>
+      {showNav && (
+        <div>
+          <Footer />
+        </div>
+      )}
       ;
     </ApolloProvider>
   );

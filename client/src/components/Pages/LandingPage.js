@@ -7,9 +7,11 @@ import Auth from "../../utils/auth";
 import SignUp from "../Footer/SignUp";
 import { useNavigate } from "react-router-dom";
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  props.funcNav(false);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
