@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import { ADD_CARD } from "../../utils/mutations";
 
 import { QUERY_USER_COLLECTION } from "../../utils/queries";
+import StoreCollections from "../../utils/StoreCollections";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -28,21 +29,8 @@ const AddCard = () => {
   //            *error  *data
   const [addCard, { err, dat }] = useMutation(ADD_CARD);
 
-  const userId = JSON.parse(localStorage.getItem("userData"));
-  const id = userId._id;
-  // console.log(userId);
-  const { loading, data, error } = useQuery(
-    QUERY_USER_COLLECTION,
-    {
-      variables: { userId: id },
-    },
-    []
-  );
-  if (loading) return "Loading";
-  // console.log(data);
-  localStorage.setItem("userCollections", JSON.stringify(data));
-
-  const userCollections = data.user.collections;
+  const userdata = JSON.parse(localStorage.getItem("userCollections"));
+  const userCollections = userdata.user.collections;
   // const collectionId =
   // console.log(data.user.collections._id);
 
@@ -76,10 +64,14 @@ const AddCard = () => {
     return <option value={id}>{title}</option>;
   });
 
-  const handeCollectionChoice = async (evt) => {
+  const handleCollectionChoice = async (evt) => {
     // console.log(evt.target.value);
     setIndex(evt.target.value);
     console.log(index);
+  };
+
+  const handleNav = async (evt) => {
+    navigate("/home");
   };
 
   return (
@@ -89,7 +81,7 @@ const AddCard = () => {
           <Form className="col v-100" onSubmit={handleAddCard}>
             <div className="m-2 bg-secondary rounded-2 text-white">
               <Form.Label className="m-2">Select Collection</Form.Label>
-              <Form.Select onChange={handeCollectionChoice}>
+              <Form.Select onChange={handleCollectionChoice}>
                 {optionMap}
               </Form.Select>
             </div>
@@ -164,7 +156,7 @@ const AddCard = () => {
                 type="submit"
                 size="lg"
                 className="w-100"
-                onClick={navigate("/home")}
+                onClick={handleNav}
               >
                 Finish Adding To Collection
               </Button>
