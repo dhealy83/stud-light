@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 .staatliches {
   font-family: "staatliches", cursive;
 }

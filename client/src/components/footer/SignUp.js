@@ -68,7 +68,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Button variant="light" onClick={handleShow}>
+      <Button variant="light" onClick={handleShow} className="w-100 my-3">
         Sign Up
       </Button>
 
@@ -80,15 +80,36 @@ const SignUp = () => {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>User Name</Form.Label>
-              <Form.Control type="text" placeholder="username" autoFocus name="username" value={formData.username} onChange={handleChange} />
+              <Form.Control
+                type="text"
+                placeholder="username"
+                autoFocus
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
-              <Form.Control name="email" type="email" placeholder="name@example.com" autoFocus value={formData.email} onChange={handleChange} />
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="name@example.com"
+                autoFocus
+                value={formData.email}
+                onChange={handleChange}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Password</Form.Label>
-              <Form.Control name="password" type="password" placeholder="password" autoFocus value={formData.password} onChange={handleChange} />
+              <Form.Control
+                name="password"
+                type="password"
+                placeholder="password"
+                autoFocus
+                value={formData.password}
+                onChange={handleChange}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
