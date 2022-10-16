@@ -1,20 +1,47 @@
 import React, { useState, useRef } from "react";
+import { useMutation, useQuery } from "@apollo/client";
 // All of the Bootstrap imports
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { ADD_CARD } from "../../utils/mutations";
+
+import { QUERY_USER_COLLECTION } from "../../utils/queries";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 const AddCard = () => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState([]);
+
+  const userId = JSON.parse(localStorage.getItem("userData"));
+  const id = userId._id;
+  // console.log(userId);
+  const { loading, data, error } = useQuery(
+    QUERY_USER_COLLECTION,
+    {
+      variables: { userId: id },
+    },
+    []
+  );
+  console.log(data);
+  // const { data: user } = useQuery();
+  // const userCollections = data.user.collections;
+  // console.log("Do We get here");
+  localStorage.setItem("userCollections", JSON.stringify(data));
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
+
+  // const optionMap = data.map((s) => {
+  //   let title = s.title;
+  //   let id = s._id;
+  //   return <option value={id}>{title}</option>;
+  // });
+  // console.log(optionMap);
 
   return (
     <div className="mb-5 h-100 wholeCard">
@@ -23,11 +50,7 @@ const AddCard = () => {
           <div className="col v-100">
             <div className="m-2 bg-secondary rounded-2 text-white">
               <Form.Label className="m-2">Select Collection</Form.Label>
-              <Form.Select>
-                <option value="1">Poop Jokes</option>
-                <option value="2">Pee Pee Jokes</option>
-                <option value="3">ppwbttcl</option>
-              </Form.Select>
+              <Form.Select></Form.Select>
             </div>
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">

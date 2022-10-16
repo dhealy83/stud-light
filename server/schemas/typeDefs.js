@@ -32,7 +32,7 @@ const typeDefs = gql`
     user(userId: ID!): User
     collections: [Collection]
     collection(collectionId: ID!): Collection
-    me: User
+    me(userId: ID!): User
   }
 
   type Mutation {
