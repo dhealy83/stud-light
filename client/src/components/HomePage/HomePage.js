@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import { useQuery } from "@apollo/client";
 
+import { QUERY_USER_COLLECTION } from "../../utils/queries";
 import {
   FaQuestion as Question,
   FaExclamation as Answer,
@@ -27,8 +29,6 @@ import RadioButtons from "./RadioButtons";
 
 import OffcanvasNav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
-
-import StoreCollections from "../../utils/StoreCollections";
 
 const fakeCollection = {
   _id: "mnbvftyuiolmnbghj",
@@ -69,11 +69,19 @@ const HomePage = () => {
 
   const [toggle, setToggle] = useState(false);
 
-  //  Store userColleciton here
-  // if (localStorage.getItem("userCollections") === null) {
-  //   StoreCollections();
-  // }
+  const userId = JSON.parse(localStorage.getItem("userData"));
+  const id = userId._id;
+  console.log(userId);
+  const { loading, data, error } = useQuery(
+    QUERY_USER_COLLECTION,
+    {
+      variables: { userId: id },
+    },
+    []
+  );
+  if (loading) return "Loading";
 
+  localStorage.setItem("userCollections", JSON.stringify(data));
   return (
     <>
       <OffcanvasNav />
