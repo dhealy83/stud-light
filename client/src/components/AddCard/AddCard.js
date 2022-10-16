@@ -125,7 +125,8 @@ const AddCard = () => {
           </Form>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 export default AddCard;
