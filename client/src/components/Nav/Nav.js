@@ -30,6 +30,7 @@ const Nav = () => {
 
     localStorage.setItem("currentCollection", index);
 
+
     navigate("/Carousel");
   };
 
@@ -51,6 +52,7 @@ const Nav = () => {
               className="accordion-button collapsed bg-light"
               type="button"
               id={id}
+
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasExample"
               aria-controls="offcanvasExample"

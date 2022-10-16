@@ -29,3 +29,17 @@ export const QUERY_USER_COLLECTION = gql`
     }
   }
 `;
+
+export const QUERY_SINGLE_COLLECTION = gql`
+  query singleCollection($collectionId: ID!) {
+    collection(collectionId: $collectionId) {
+      title
+      cards {
+        _id
+        question
+        answer
+        notes
+      }
+    }
+  }
+`
