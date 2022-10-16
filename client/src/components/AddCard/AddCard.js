@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import { ADD_CARD } from "../../utils/mutations";
 
 import { QUERY_USER_COLLECTION } from "../../utils/queries";
+import StoreCollections from "../../utils/StoreCollections";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -28,21 +29,8 @@ const AddCard = () => {
   //            *error  *data
   const [addCard, { err, dat }] = useMutation(ADD_CARD);
 
-  const userId = JSON.parse(localStorage.getItem("userData"));
-  const id = userId._id;
-  // console.log(userId);
-  const { loading, data, error } = useQuery(
-    QUERY_USER_COLLECTION,
-    {
-      variables: { userId: id },
-    },
-    []
-  );
-  if (loading) return "Loading";
-  // console.log(data);
-  localStorage.setItem("userCollections", JSON.stringify(data));
-
-  const userCollections = data.user.collections;
+  const userdata = JSON.parse(localStorage.getItem("userCollections"));
+  const userCollections = userdata.user.collections;
   // const collectionId =
   // console.log(data.user.collections._id);
 
