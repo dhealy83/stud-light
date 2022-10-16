@@ -42,7 +42,7 @@ const LandingPage = (props) => {
   };
   return (
     <div className=" container-fluid bg-secondary px-0">
-      <div className="row">
+      <div className="row min-vh-100">
         <header id="splash" className="bg-dark col">
           <h1 className="staatliches fs-1 text-center text-light">
             {" "}
