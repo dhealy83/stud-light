@@ -16,8 +16,21 @@ const Nav = () => {
   // This handles the delete user mutation and closes the modal
   const [deleteUser, { error, data }] = useMutation(DELETE_USER);
 
-  const handleUserDelete = (evt) => {
+  const handleUserDelete = async (evt) => {
     evt.preventDefault();
+    const userId = JSON.parse(localStorage.getItem("userData"));
+    const id = userId._id;
+    console.log(userId._id);
+    try {
+      // deleteUser(userId._id);
+
+      await deleteUser({
+        variables: { userId: id },
+
+      });
+    } catch (e) {
+      console.log(e);
+    }
     handleClose();
   };
 

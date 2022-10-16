@@ -24,7 +24,7 @@ const Login = () => {
       const { data } = await login({
         variables: { ...formData },
       });
-      console.log(data.login.user);
+      console.log(data);
       Auth.login(data.login.token, JSON.stringify(data.login.user));
     } catch (e) {
       console.error(e);

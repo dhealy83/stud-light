@@ -29,11 +29,12 @@ class AuthService {
 
   login(idToken, userData) {
     localStorage.setItem("id_token", idToken);
-    localStorage.setItem("userData", userData );
+    localStorage.setItem("userData", userData);
     window.location.assign("/");
   }
 
   logout() {
+    localStorage.removeItem("userData");
     localStorage.removeItem("id_token");
     window.location.reload();
   }

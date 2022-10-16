@@ -45,6 +45,7 @@ const resolvers = {
       );
     },
     deleteUser: async (parent, { userId }) => {
+      console.log(userId, "Im right here");
       await User.findOneAndDelete({ _id: userId });
     },
 
@@ -66,9 +67,8 @@ const resolvers = {
     },
 
     // Leaving out context for now until we get authorization
-    addCollection: async (parent, { userId, title }, context ) => {
-      if (context.user){
-        console.log(context);
+    addCollection: async (parent, { userId, title }) => {
+      // console.log(context);
       console.log(title);
       const createCollection = await Collection.create({
         title: title,
@@ -83,9 +83,10 @@ const resolvers = {
       );
 
       return createCollection, collectionToUser;
-      }
+      // if (context.user) {
+      // }
 
-      throw new AuthenticationError('You need to be logged in!');
+      // throw new AuthenticationError("You need to be logged in!");
     },
 
     updateCollection: async (parent, { collectionId, title }) => {
