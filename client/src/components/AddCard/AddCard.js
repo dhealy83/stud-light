@@ -1,20 +1,47 @@
 import React, { useState, useRef } from "react";
+import { useMutation, useQuery } from "@apollo/client";
 // All of the Bootstrap imports
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { ADD_CARD } from "../../utils/mutations";
+
+import { QUERY_USER_COLLECTION } from "../../utils/queries";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import OffcanvasNav from "../Nav/Nav";
+import Footer from "../Footer/Footer";
 
 const AddCard = () => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState([]);
 
+  const userId = JSON.parse(localStorage.getItem("userData"));
+  const id = userId._id;
+  // console.log(userId);
+  const { loading, data, error } = useQuery(
+    QUERY_USER_COLLECTION,
+    {
+      variables: { userId: id },
+    },
+    []
+  );
+  if (loading) return "Loading";
+  console.log(data);
+  localStorage.setItem("userCollections", JSON.stringify(data));
+
+  const userCollections = data.user.collections;
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
+
+  const optionMap = userCollections.map((s) => {
+    let title = s.title;
+    let id = s._id;
+    return <option value={id}>{title}</option>;
+  });
 
   return (
     <div className="mb-5 h-100 wholeCard">
@@ -23,18 +50,12 @@ const AddCard = () => {
           <div className="col v-100">
             <div className="m-2 bg-secondary rounded-2 text-white">
               <Form.Label className="m-2">Select Collection</Form.Label>
-              <Form.Select>
-                <option value="1">Poop Jokes</option>
-                <option value="2">Pee Pee Jokes</option>
-                <option value="3">ppwbttcl</option>
-              </Form.Select>
+              <Form.Select>{optionMap}</Form.Select>
             </div>
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
-                  <Form.Label className="m-2 text-white">
-                    Add Your Question Below
-                  </Form.Label>
+                  <Form.Label className="m-2 text-white">Add Your Question Below</Form.Label>
                   <Form.Control as="textarea" rows={5} placeholder="Required" />
                 </Form.Group>
               </Form>
@@ -42,9 +63,7 @@ const AddCard = () => {
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
-                  <Form.Label className="m-2 text-white">
-                    Add Your Answer Below
-                  </Form.Label>
+                  <Form.Label className="m-2 text-white">Add Your Answer Below</Form.Label>
                   <Form.Control as="textarea" rows={5} placeholder="Required" />
                 </Form.Group>
               </Form>
@@ -53,11 +72,7 @@ const AddCard = () => {
               <Form className="bg-secondary rounded-2">
                 <Form.Group>
                   <Form.Label className="m-2 text-white">Notes</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={5}
-                    placeholder="Optional text here..."
-                  />
+                  <Form.Control as="textarea" rows={5} placeholder="Optional text here..." />
                 </Form.Group>
               </Form>
             </Card>

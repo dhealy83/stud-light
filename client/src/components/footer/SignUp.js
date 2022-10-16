@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { ADD_USER, LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import { useNavigate } from "react-router-dom";
 import { asyncMap } from "@apollo/client/utilities";
 
 const SignUp = () => {
@@ -27,6 +28,7 @@ const SignUp = () => {
     });
   };
 
+  const navigate = useNavigate();
   const handleUserData = async () => {
     try {
       const { data } = await login({
@@ -58,6 +60,7 @@ const SignUp = () => {
       password: "",
       username: "",
     });
+    navigate("/home", { replace: true });
   };
 
   const handleClose = () => setShow(false);
@@ -77,42 +80,22 @@ const SignUp = () => {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>User Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="username"
-                autoFocus
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-              />
+              <Form.Control type="text" placeholder="username" autoFocus name="username" value={formData.username} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-                value={formData.email}
-                onChange={handleChange}
-              />
+              <Form.Control name="email" type="email" placeholder="name@example.com" autoFocus value={formData.email} onChange={handleChange} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Password</Form.Label>
-              <Form.Control
-                name="password"
-                type="password"
-                placeholder="password"
-                autoFocus
-                value={formData.password}
-                onChange={handleChange}
-              />
+              <Form.Control name="password" type="password" placeholder="password" autoFocus value={formData.password} onChange={handleChange} />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>
+
             <Button type="submit" variant="secondary">
               Sign Up
             </Button>

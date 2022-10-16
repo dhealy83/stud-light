@@ -39,3 +39,24 @@ export const ADD_COLLECTION = gql`
     }
   }
 `;
+
+export const ADD_CARD = gql`
+  mutation addCard(
+    $collectionId: ID!
+    $question: String!
+    $answer: String!
+    $notes: String
+  ) {
+    addCard(
+      collectionId: $collectionId
+      question: $question
+      answer: $answer
+      notes: $notes
+    ) {
+      _id
+      question
+      answer
+      notes
+    }
+  }
+`;
