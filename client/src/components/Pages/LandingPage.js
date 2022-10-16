@@ -83,7 +83,7 @@ const LandingPage = (props) => {
             </div>
             <Form
               onSubmit={handleSubmit}
-              className="col-6 col-lg-3 col-md-4 col-xxl-2 me-2 align-self-end"
+              className="col-6 col-md-4 col-lg-3 col-xxl-2 me-2 align-self-end"
             >
               <Form.Group className="my-3">
                 <Form.Label>Email address</Form.Label>

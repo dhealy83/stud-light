@@ -149,26 +149,28 @@ const AddCard = () => {
                 <Form.Control type="file" name="image" size="lg" />
               </Form.Group>
             </div> */}
-            <div className="m-2">
-              <Button
-                variant="secondary"
-                type="submit"
-                size="lg"
-                className="w-100"
-              >
-                Add Card
-              </Button>{" "}
-            </div>
-            <div className="m-2">
-              <Button
-                variant="secondary"
-                type="submit"
-                size="lg"
-                className="w-100"
-                onClick={handleNav}
-              >
-                Finish Adding To Collection
-              </Button>
+            <div className="col">
+              <div className="m-2 col">
+                <Button
+                  variant="secondary"
+                  type="submit"
+                  size="lg"
+                  className="w-100"
+                >
+                  Add Card
+                </Button>{" "}
+              </div>
+              <div className="m-2 col">
+                <Button
+                  variant="secondary"
+                  type="submit"
+                  size="lg"
+                  className="w-100"
+                  onClick={handleNav}
+                >
+                  Finish Adding To Collection
+                </Button>
+              </div>
             </div>
           </Form>
         </div>

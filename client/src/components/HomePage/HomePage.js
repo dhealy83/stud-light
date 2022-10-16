@@ -85,91 +85,89 @@ const HomePage = () => {
   return (
     <>
       <OffcanvasNav />
-      <div className="wholeCard h-100">
-        <div>
-          <Carousel
-            activeIndex={index}
-            onSelect={handleSelect}
-            className="card m-2 border boarder-2 boarder-secondary rounded-3"
-            interval="10000000"
-          >
-            {fakeCollection.cards.map((obj, i) => {
-              return (
-                <Carousel.Item className="buttonCheckBox" key={obj._id}>
-                  <RadioButtons key={i} index={i} />
-                  <Col className="d-flex justify-content-evenly mx-3">
-                    <h1>{obj._id}</h1>
-                    <ButtonGroup className="m-2 d-flex justify-content-end"></ButtonGroup>
-                  </Col>
-                  <img
-                    className="d-block w-100"
-                    src={cardBackground}
-                    alt="First slide"
-                  />
-                  <Carousel.Caption className="text-dark">
-                    <Container>
-                      <Col>
-                        <Row>
-                          {toggle ? (
-                            <a href="#" onClick={() => setToggle(!toggle)}>
-                              <CardIcon icon={<Question size="30" />} />
-                            </a>
-                          ) : (
-                            <a href="#" onClick={() => setToggle(!toggle)}>
-                              <CardIcon icon={<Answer size="30" />} />
-                            </a>
-                          )}
+      <div className="d-flex justify-content-center">
+        <div className="wholeCard h-75">
+          <div className="">
+            <Carousel
+              activeIndex={index}
+              onSelect={handleSelect}
+              className="card m-2 border boarder-2 boarder-secondary rounded-3 "
+              interval="10000000"
+            >
+              {fakeCollection.cards.map((obj, i) => {
+                return (
+                  <Carousel.Item className="buttonCheckBox" key={obj._id}>
+                    <RadioButtons key={i} index={i} />
+                    <Col className="d-flex justify-content-center mx-3">
+                      <h1>{obj._id}</h1>
+                      <ButtonGroup className="m-2 d-flex justify-content-end"></ButtonGroup>
+                    </Col>
+                    <img
+                      className="d-block w-100"
+                      src={cardBackground}
+                      alt="First slide"
+                    />
+                    <div className="">
+                      <Carousel.Caption className="cardText col text-dark row ">
+                        <Container>
+                          <Col className="">
+                            <Row>
+                              {toggle ? (
+                                <a href="#" onClick={() => setToggle(!toggle)}>
+                                  <CardIcon icon={<Question size="30" />} />
+                                </a>
+                              ) : (
+                                <a href="#" onClick={() => setToggle(!toggle)}>
+                                  <CardIcon icon={<Answer size="30" />} />
+                                </a>
+                              )}
 
-                          {/* <a href="#" onClick={() => setToggle(!toggle)}>
-                 <CardIcon icon={<Question size="50" />} />
-                </a> */}
-                          {toggle && (
-                            <div className="flip-horizontal-bottom">
-                              <div class="card">
-                                <div class="card-body">
-                                  <p class="card-text">{obj.answer}</p>
+                              {toggle && (
+                                <div className="flip-horizontal-bottom">
+                                  <div class="">
+                                    <p class="card-text">{obj.answer}</p>
+                                  </div>
                                 </div>
-                              </div>
-                              <p className="text-success">"Flipped"</p>
-                            </div>
-                          )}
-                          {!toggle && (
-                            <div className="flip-horizontal-bottom">
-                              <div class="card">
-                                <div class="card-body">
-                                  <p class="card-text">{obj.question}</p>
+                              )}
+                              {!toggle && (
+                                <div className="flip-horizontal-bottom">
+                                  <div class="">
+                                    <div class="">
+                                      <p class="card-text">{obj.question}</p>
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
-                              <p className="text-info">"Not Flipped"</p>
-                            </div>
-                          )}
-                        </Row>
-                      </Col>
-                    </Container>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              );
-            })}
-          </Carousel>
-        </div>
-        <div className="d-flex">
-          <div className="col v-100">
-            <Card className="m-2">
-              <Card.Title className="bg-secondary text-white p-2 rounded-top">
-                Notes
-              </Card.Title>
-              <Card.Body>
-                <Card.Text>{fakeCollection.cards[index].notes}</Card.Text>
-              </Card.Body>
-            </Card>
+                              )}
+                            </Row>
+                          </Col>
+                        </Container>
+                      </Carousel.Caption>
+                    </div>
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
           </div>
-        </div>
-        <div className="m-2 mt-auto">
-          <Link to="/NewCollection">
-            <Button variant="secondary" size="lg" className="w-100">
-              Create New Collection
-            </Button>
-          </Link>
+
+          <div className="d-flex">
+            <div className="col v-100">
+              <Card className="m-2">
+                <Card.Title className="bg-secondary text-white p-2 rounded-top">
+                  Notes
+                </Card.Title>
+                <Card.Body>
+                  <Card.Text>{fakeCollection.cards[index].notes}</Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
+          </div>
+          <div className="m-2 mt-auto">
+            <Link to="/NewCollection">
+              <Button variant="secondary" size="lg" className="w-100">
+                Create New Collection
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
       <Footer />

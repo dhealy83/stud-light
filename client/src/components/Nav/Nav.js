@@ -7,9 +7,11 @@ import { QUERY_USER_COLLECTION } from "../../utils/queries";
 import { DELETE_USER } from "../../utils/mutations";
 import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
+import "./Nav.css";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
+  const [index, setIndex] = useState("");
 
   // This handles the navbar open and close
   const handleClose = () => setShow(false);
@@ -21,30 +23,46 @@ const Nav = () => {
   // This handles the delete user mutation and closes the modal
   const [deleteUser, { error, data }] = useMutation(DELETE_USER);
 
-  const dat = JSON.parse(localStorage.getItem("userCollections"));
-  // console.log(dat);
-  const userCollection = dat.user.collections;
-  const mapCollections = userCollection.map((s) => {
-    let title = s.title;
-    let id = s._id;
-    return (
-      <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingOne">
-          <button
-            className="accordion-button collapsed bg-light"
-            type="button"
-            id={id}
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-FlashcardOne"
-            aria-expanded="false"
-            aria-controls="flush-FlashcardOne"
-          >
-            {title}
-          </button>
-        </h2>
-      </div>
-    );
-  });
+  const gotToUserCollection = (evt) => {
+    evt.preventDefault();
+    setIndex(evt.target.id);
+    console.log(index);
+
+    localStorage.setItem("currentCollection", index);
+
+    navigate("/Carousel");
+  };
+
+  let mapCollections = [];
+
+  if (localStorage.getItem("userCollections") === null) {
+    return;
+  } else {
+    const dat = JSON.parse(localStorage.getItem("userCollections"));
+
+    const userCollection = dat.user.collections;
+    mapCollections = userCollection.map((s) => {
+      let title = s.title;
+      let id = s._id;
+      return (
+        <div>
+          <h2 className="accordion-header" id="flush-headingOne">
+            <button
+              className="accordion-button collapsed bg-light"
+              type="button"
+              id={id}
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+              onClick={gotToUserCollection}
+            >
+              {title}
+            </button>
+          </h2>
+        </div>
+      );
+    });
+  }
 
   const handleUserDelete = async (evt) => {
     evt.preventDefault();
@@ -119,36 +137,20 @@ const Nav = () => {
               size="lg"
               className="w-100"
               onClick={handleExpanded}
-
-              // onClick={navigate("/NewCollection")} this
             >
               Create New Collection
             </Button>
           </div>
           <div className="accordion accordion-flush" id="menu">
-            {/* <div className="accordion-item">
-              <h2 className="accordion-header" id="flush-headingOne">
-                <button
-                  className="accordion-button collapsed bg-light"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-FlashcardOne"
-                  aria-expanded="false"
-                  aria-controls="flush-FlashcardOne"
-                >
-                  HTML Flashcards
-                </button>
-              </h2>
-            </div> */}
             {mapCollections}
           </div>
         </div>
         <div className="m-2">
-          <div>
+          <div className="mb-5">
             <Button
               variant="secondary"
               onClick={handleShow}
-              className="mb-5 ms-3"
+              className="deleteUser"
             >
               Delete Account
             </Button>
