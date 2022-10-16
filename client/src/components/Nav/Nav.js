@@ -27,32 +27,37 @@ const Nav = () => {
     // The page need to render the collection card associated with the button the user presses
     console.log("Clicked");
   };
+  let mapCollections = [];
 
-  const dat = JSON.parse(localStorage.getItem("userCollections"));
-  // console.log(dat);
-  const userCollection = dat.user.collections;
-  const mapCollections = userCollection.map((s) => {
-    let title = s.title;
-    let id = s._id;
-    return (
-      <div className="accordion-item">
-        <h2 className="accordion-header" id="flush-headingOne">
-          <button
-            className="accordion-button collapsed bg-light"
-            type="button"
-            id={id}
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-FlashcardOne"
-            aria-expanded="false"
-            aria-controls="flush-FlashcardOne"
-            onClick={gotToUserCollection}
-          >
-            {title}
-          </button>
-        </h2>
-      </div>
-    );
-  });
+  if (localStorage.getItem("userCollections") === null) {
+    return;
+  } else {
+    const dat = JSON.parse(localStorage.getItem("userCollections"));
+    console.log(dat);
+    const userCollection = dat.user.collections;
+    mapCollections = userCollection.map((s) => {
+      let title = s.title;
+      let id = s._id;
+      return (
+        <div className="accordion-item">
+          <h2 className="accordion-header" id="flush-headingOne">
+            <button
+              className="accordion-button collapsed bg-light"
+              type="button"
+              id={id}
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-FlashcardOne"
+              aria-expanded="false"
+              aria-controls="flush-FlashcardOne"
+              onClick={gotToUserCollection}
+            >
+              {title}
+            </button>
+          </h2>
+        </div>
+      );
+    });
+  }
 
   const handleUserDelete = async (evt) => {
     evt.preventDefault();
