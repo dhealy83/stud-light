@@ -26,22 +26,21 @@ const AddCard = () => {
     },
     []
   );
+  if (loading) return "Loading";
   console.log(data);
-  // const { data: user } = useQuery();
   // const userCollections = data.user.collections;
-  // console.log("Do We get here");
   localStorage.setItem("userCollections", JSON.stringify(data));
 
+  const userCollections = data.user.collections;
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
-  // const optionMap = data.map((s) => {
-  //   let title = s.title;
-  //   let id = s._id;
-  //   return <option value={id}>{title}</option>;
-  // });
-  // console.log(optionMap);
+  const optionMap = userCollections.map((s) => {
+    let title = s.title;
+    let id = s._id;
+    return <option value={id}>{title}</option>;
+  });
 
   return (
     <div className="mb-5 h-100 wholeCard">
@@ -50,7 +49,7 @@ const AddCard = () => {
           <div className="col v-100">
             <div className="m-2 bg-secondary rounded-2 text-white">
               <Form.Label className="m-2">Select Collection</Form.Label>
-              <Form.Select></Form.Select>
+              <Form.Select>{optionMap}</Form.Select>
             </div>
             <Card className="m-2">
               <Form className="bg-secondary rounded-2">
