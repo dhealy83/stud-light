@@ -154,6 +154,16 @@ const AddCard = () => {
                 className="w-100"
               >
                 Add Card
+              </Button>{" "}
+            </div>
+            <div className="m-2">
+              <Button
+                variant="secondary"
+                type="submit"
+                size="lg"
+                className="w-100"
+              >
+                Finish Adding To Collection
               </Button>
             </div>
           </Form>
