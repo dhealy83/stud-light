@@ -5,7 +5,7 @@ import Button from "react-bootstrap/esm/Button";
 import Modal from "react-bootstrap/Modal";
 import { QUERY_USER_COLLECTION } from "../../utils/queries";
 import { DELETE_USER } from "../../utils/mutations";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
 
 const Nav = () => {
@@ -20,6 +20,31 @@ const Nav = () => {
 
   // This handles the delete user mutation and closes the modal
   const [deleteUser, { error, data }] = useMutation(DELETE_USER);
+
+  const dat = JSON.parse(localStorage.getItem("userCollections"));
+  // console.log(dat);
+  const userCollection = dat.user.collections;
+  const mapCollections = userCollection.map((s) => {
+    let title = s.title;
+    let id = s._id;
+    return (
+      <div className="accordion-item">
+        <h2 className="accordion-header" id="flush-headingOne">
+          <button
+            className="accordion-button collapsed bg-light"
+            type="button"
+            id={id}
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-FlashcardOne"
+            aria-expanded="false"
+            aria-controls="flush-FlashcardOne"
+          >
+            {title}
+          </button>
+        </h2>
+      </div>
+    );
+  });
 
   const handleUserDelete = async (evt) => {
     evt.preventDefault();
@@ -101,7 +126,7 @@ const Nav = () => {
             </Button>
           </div>
           <div className="accordion accordion-flush" id="menu">
-            <div className="accordion-item">
+            {/* <div className="accordion-item">
               <h2 className="accordion-header" id="flush-headingOne">
                 <button
                   className="accordion-button collapsed bg-light"
@@ -114,198 +139,8 @@ const Nav = () => {
                   HTML Flashcards
                 </button>
               </h2>
-              {/* <div
-                id="flush-FlashcardOne"
-                className="accordion-collapse collapse"
-                aria-labelledby="flush-headingOne"
-                data-bs-parent="#menu"
-              >
-                <div className="accordion-body bg-light">
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Boiler plate
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Links
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Scripts
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header" id="flush-headingTwo">
-                <button
-                  className="accordion-button collapsed bg-light"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseTwo"
-                >
-                  CSS Flashcards
-                </button>
-              </h2>
-              <div
-                id="flush-collapseTwo"
-                className="accordion-collapse collapse"
-                aria-labelledby="flush-headingTwo"
-                data-bs-parent="#menu"
-              >
-                <div className="accordion-body bg-light">
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Element Styling
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Custom Classes
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Custom Ids
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header" id="flush-headingThree">
-                <button
-                  className="accordion-button collapsed bg-light"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseThree"
-                >
-                  JavaScript Flashcards
-                </button>
-              </h2>
-              <div
-                id="flush-collapseThree"
-                className="accordion-collapse collapse"
-                aria-labelledby="flush-headingThree"
-                data-bs-parent="#menu"
-              >
-                <div className="accordion-body bg-light">
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Linking style sheets
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    The Functions
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Methods
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header" id="flush-headingFour">
-                <button
-                  className="accordion-button collapsed bg-light"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseFour"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseFour"
-                >
-                  Test Suite A
-                </button>
-              </h2>
-              <div
-                id="flush-collapseFour"
-                className="accordion-collapse collapse"
-                aria-labelledby="flush-headingFour"
-                data-bs-parent="#menu"
-              >
-                <div className="accordion-body bg-light">
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Test item #1
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Test item #2
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Test item #3
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header" id="flush-headingFive">
-                <button
-                  className="accordion-button collapsed bg-light"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseFive"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseFive"
-                >
-                  Test Suite B
-                </button>
-              </h2>
-              <div
-                id="flush-collapseFive"
-                className="accordion-collapse collapse"
-                aria-labelledby="flush-headingFive"
-                data-bs-parent="#menu"
-              >
-                <div className="accordion-body bg-light">
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Test item #1
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Test item #2
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm m-1"
-                  >
-                    Test item #3
-                  </button>
-                </div>
-              </div> */}
-            </div>
+            </div> */}
+            {mapCollections}
           </div>
         </div>
         <div className="m-2">
