@@ -5,7 +5,7 @@ import Button from "react-bootstrap/esm/Button";
 import Modal from "react-bootstrap/Modal";
 import { QUERY_USER_COLLECTION } from "../../utils/queries";
 import { DELETE_USER } from "../../utils/mutations";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
 
 const Nav = () => {
@@ -20,6 +20,31 @@ const Nav = () => {
 
   // This handles the delete user mutation and closes the modal
   const [deleteUser, { error, data }] = useMutation(DELETE_USER);
+
+  const dat = JSON.parse(localStorage.getItem("userCollections"));
+  // console.log(dat);
+  const userCollection = dat.user.collections;
+  const mapCollections = userCollection.map((s) => {
+    let title = s.title;
+    let id = s._id;
+    return (
+      <div className="accordion-item">
+        <h2 className="accordion-header" id="flush-headingOne">
+          <button
+            className="accordion-button collapsed bg-light"
+            type="button"
+            id={id}
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-FlashcardOne"
+            aria-expanded="false"
+            aria-controls="flush-FlashcardOne"
+          >
+            {title}
+          </button>
+        </h2>
+      </div>
+    );
+  });
 
   const handleUserDelete = async (evt) => {
     evt.preventDefault();
@@ -101,7 +126,7 @@ const Nav = () => {
             </Button>
           </div>
           <div className="accordion accordion-flush" id="menu">
-            <div className="accordion-item">
+            {/* <div className="accordion-item">
               <h2 className="accordion-header" id="flush-headingOne">
                 <button
                   className="accordion-button collapsed bg-light"
@@ -114,7 +139,8 @@ const Nav = () => {
                   HTML Flashcards
                 </button>
               </h2>
-            </div>
+            </div> */}
+            {mapCollections}
           </div>
         </div>
         <div className="m-2">
