@@ -10,6 +10,12 @@ import { useNavigate } from "react-router-dom";
 const LandingPage = (props) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const navigate = useNavigate();
+
+  const mytoken = Auth.getToken();
+  if (mytoken !== null) {
+    navigate("/home");
+  }
 
   props.funcNav(false);
 
@@ -21,7 +27,7 @@ const LandingPage = (props) => {
       [name]: value,
     });
   };
-  const navigate = useNavigate();
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
