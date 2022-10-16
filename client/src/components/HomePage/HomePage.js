@@ -70,9 +70,9 @@ const HomePage = () => {
   const [toggle, setToggle] = useState(false);
 
   //  Store userColleciton here
-  if (localStorage.getItem("userCollections") === null) {
-    StoreCollections();
-  }
+  // if (localStorage.getItem("userCollections") === null) {
+  //   StoreCollections();
+  // }
 
   return (
     <>

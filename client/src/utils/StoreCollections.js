@@ -7,7 +7,7 @@ const StoreCollections = async () => {
   const userId = JSON.parse(localStorage.getItem("userData"));
   const id = userId._id;
   console.log(userId);
-  const { loading, data, error } = await useQuery(
+  const { loading, data, error } = useQuery(
     QUERY_USER_COLLECTION,
     {
       variables: { userId: id },
@@ -15,11 +15,12 @@ const StoreCollections = async () => {
     []
   );
   if (loading) return "Loading";
-  console.log(data);
+  if (error) {
+    console.log(error);
+  }
+  console.log(data, "We are here");
 
   localStorage.setItem("userCollections", JSON.stringify(data));
-
-  return;
 };
 
 export default StoreCollections;

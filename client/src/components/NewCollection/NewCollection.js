@@ -7,7 +7,6 @@ import OffcanvasNav from "../Nav/Nav";
 import { ADD_COLLECTION } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
-import StoreCollections from "../../utils/StoreCollections";
 
 const NewCollection = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +33,6 @@ const NewCollection = () => {
         title: formData.title,
       },
     });
-    StoreCollections();
     setFormData({ title: "" });
     navigate("/AddCard");
   };

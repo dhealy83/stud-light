@@ -29,10 +29,19 @@ const AddCard = () => {
   //            *error  *data
   const [addCard, { err, dat }] = useMutation(ADD_CARD);
 
-  const userdata = JSON.parse(localStorage.getItem("userCollections"));
-  const userCollections = userdata.user.collections;
-  // const collectionId =
-  // console.log(data.user.collections._id);
+  const userId = JSON.parse(localStorage.getItem("userData"));
+  const id = userId._id;
+  console.log(userId);
+  const { loading, data, error } = useQuery(
+    QUERY_USER_COLLECTION,
+    {
+      variables: { userId: id },
+    },
+    []
+  );
+  if (loading) return "Loading";
+
+  const userCollections = data.user.collections;
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
