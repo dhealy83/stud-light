@@ -52,27 +52,25 @@ const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <Router>
-        {showNav && (
-          <div>
-            <Nav />
-          </div>
-        )}
-        <Routes>
-          <Route index element={<LandingPage funcNav={setShowNav} />} />
+      {showNav && (
+        <div>
+          <Nav />
+        </div>
+      )}
+      <Routes>
+        <Route index element={<LandingPage funcNav={setShowNav} />} />
 
-          <Route path="/HomePage" element={<HomePage />} />
-          <Route path="/Carousel" element={<Carousel />} />
-          <Route path="/AddCard" element={<AddCard />} />
-          <Route path="/UpdateCard" element={<UpdateCard />} />
-          <Route path="/NewCollection" element={<NewCollection />} />
-        </Routes>
-        {showNav && (
-          <div>
-            <Footer />
-          </div>
-        )}
-      </Router>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/Carousel" element={<Carousel />} />
+        <Route path="/AddCard" element={<AddCard />} />
+        <Route path="/UpdateCard" element={<UpdateCard />} />
+        <Route path="/NewCollection" element={<NewCollection />} />
+      </Routes>
+      {showNav && (
+        <div>
+          <Footer />
+        </div>
+      )}
       ;
     </ApolloProvider>
   );
