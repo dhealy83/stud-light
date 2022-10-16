@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/dhealy83/stud-light/issues"
   },
-  "homepage": "https://github.com/dhealy83/stud-light#readme"
+  "homepage": "https://github.com/dhealy83/stud-light#readme",
+  "dependencies": {
+    "react-router-dom": "^6.0.0"
+  }
 }
