@@ -110,7 +110,7 @@ const FlashCarousel = () => {
                                   <p class="card-text">{obj.answer}</p>
                                 </div>
                               </div>
-                              <p className="text-success">"Flipped"</p>
+                              {/* <p className="text-success">"Flipped"</p> */}
                             </div>
                           )}
                           {!toggle && (
@@ -120,7 +120,7 @@ const FlashCarousel = () => {
                                   <p class="card-text">{obj.question}</p>
                                 </div>
                               </div>
-                              <p className="text-info">"Not Flipped"</p>
+                              {/* <p className="text-info">"Not Flipped"</p> */}
                             </div>
                           )}
                         </Row>
