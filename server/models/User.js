@@ -14,10 +14,9 @@ const userSchema = new Schema({
     unique: true,
     validate: {
       validator: (email) => {
-        return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(email);
+        return /^([A-Za-z0-9_\.-]+)@([A-Z\da-z\.-]+)\.([a-z\.]{2,6})$/.test(email);
       },
-      message: (email) =>
-        `${email.value} is not a valid email. Please try again.`,
+      message: (email) => `${email.value} is not a valid email. Please try again.`,
     },
   },
   password: {
