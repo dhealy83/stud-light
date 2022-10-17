@@ -38,18 +38,18 @@ const fakeCollection = {
       _id: "How to use the flashcards!",
       title: "Title1",
       question: "Click the ! button to flip the card.",
-      answer: "Great! now let's get you logged in.",
+      answer: "Answers to your questions will be on the back of your flashcards!",
       notes: "Click the right side of the card to move to the next card.",
       radioValue: 0,
     },
     {
-      _id: "Sign Up!",
+      _id: "Start Creating Flashcards!",
       title: "Title2",
       question:
-        "Click the sign up button on the bottom right of the page so you can create your first collection?",
-      answer: "Answer2",
+        "Let's get you studying!",
+      answer: "First you will have to create a collection of Flashcards",
       notes:
-        "Once signed up you should click the create new collection button so you can start making your cards. You can make as many collections as you'd like and navigate between them.",
+        "Click on the 'Create New Collection' button to get started",
       radioValue: 1,
     },
   ],
