@@ -113,6 +113,7 @@ const FlashCarousel = ({ route, navigation }) => {
                                   <p className=" card-text">{obj.answer}</p>
                                 </div>
                               </div>
+
                             )}
                             {!toggle && (
                               <div className="flip-horizontal-bottom">
@@ -165,6 +166,7 @@ const FlashCarousel = ({ route, navigation }) => {
                   onClick={handleShow}
                 >
                   Delete Collection
+
                 </Button>
               </div>
               <div className="m-2 mt-auto">
