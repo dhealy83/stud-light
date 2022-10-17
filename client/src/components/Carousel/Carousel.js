@@ -140,7 +140,7 @@ const FlashCarousel = () => {
               </Card.Title>
               <Card.Body>
                 {/* notes are currently hardcoded to grab the notes of the second card in the array */}
-                <Card.Text>{data.collection.cards[1].notes}</Card.Text>
+                <Card.Text>{data.collection.cards[0].notes}</Card.Text>
               </Card.Body>
             </Card>
 
