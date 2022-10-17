@@ -63,7 +63,3 @@ If you have any questions please email us at:
 ## David Healy: drtjprdave@gmail.com
 
 ## [Heroku link](https://stud-lite.herokuapp.com/)
-<<<<<<< HEAD
-
-=======
->>>>>>> 05de16d2d26929388d4b9634e06dc8f33d8b00b7
