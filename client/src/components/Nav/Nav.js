@@ -31,7 +31,7 @@ const Nav = () => {
     localStorage.setItem("currentCollection", index);
 
 
-    navigate("/Carousel");
+    // navigate("/Carousel");
   };
 
   let mapCollections = [];
