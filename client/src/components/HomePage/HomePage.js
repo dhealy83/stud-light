@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_USER_COLLECTION } from "../../utils/queries";
@@ -9,17 +7,7 @@ import {
   FaExclamation as Answer,
 } from "react-icons/fa";
 // All of the Bootstrap imports
-import {
-  Form,
-  ToggleButton,
-  Button,
-  Col,
-  Row,
-  Container,
-  Carousel,
-  Card,
-  ButtonGroup,
-} from "react-bootstrap";
+import { Col, Container, Carousel, Card, ButtonGroup } from "react-bootstrap";
 // All of the image imports
 import cardBackground from "../../assets/cardBackground.jpg";
 // import CardData from "./CardData";
@@ -63,15 +51,11 @@ const HomePage = () => {
     setToggle(false);
   };
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const [toggle, setToggle] = useState(false);
 
   const userId = JSON.parse(localStorage.getItem("userData"));
   const id = userId._id;
-  console.log(userId);
+
   const { loading, data, error } = useQuery(
     QUERY_USER_COLLECTION,
     {
@@ -85,8 +69,8 @@ const HomePage = () => {
   return (
     <>
       <OffcanvasNav />
-      <div className="d-flex justify-content-center">
-        <div className="wholeCard h-75">
+      <div className="d-flex justify-content-center h-75">
+        <div className="wholeCard ">
           <div className="">
             <Carousel
               activeIndex={index}
@@ -108,37 +92,33 @@ const HomePage = () => {
                       alt="First slide"
                     />
                     <div className="">
-                      <Carousel.Caption className="cardText col text-dark row ">
+                      <Carousel.Caption className="cardText text-dark ">
                         <Container>
                           <Col className="">
-                            <Row>
-                              {toggle ? (
-                                <a href="#" onClick={() => setToggle(!toggle)}>
-                                  <CardIcon icon={<Question size="30" />} />
-                                </a>
-                              ) : (
-                                <a href="#" onClick={() => setToggle(!toggle)}>
-                                  <CardIcon icon={<Answer size="30" />} />
-                                </a>
-                              )}
+                            {toggle ? (
+                              <a href="#" onClick={() => setToggle(!toggle)}>
+                                <CardIcon icon={<Question size="30" />} />
+                              </a>
+                            ) : (
+                              <a href="#" onClick={() => setToggle(!toggle)}>
+                                <CardIcon icon={<Answer size="30" />} />
+                              </a>
+                            )}
 
-                              {toggle && (
-                                <div className="flip-horizontal-bottom">
-                                  <div class="">
-                                    <p class="card-text">{obj.answer}</p>
-                                  </div>
+                            {toggle && (
+                              <div className="flip-horizontal-bottom">
+                                <div class="">
+                                  <p class="card-text">{obj.answer}</p>
                                 </div>
-                              )}
-                              {!toggle && (
-                                <div className="flip-horizontal-bottom">
-                                  <div class="">
-                                    <div class="">
-                                      <p class="card-text">{obj.question}</p>
-                                    </div>
-                                  </div>
+                              </div>
+                            )}
+                            {!toggle && (
+                              <div className="flip-horizontal-bottom">
+                                <div class="">
+                                  <p class="card-text">{obj.question}</p>
                                 </div>
-                              )}
-                            </Row>
+                              </div>
+                            )}
                           </Col>
                         </Container>
                       </Carousel.Caption>
@@ -161,13 +141,7 @@ const HomePage = () => {
               </Card>
             </div>
           </div>
-          <div className="m-2 mt-auto">
-            <Link to="/NewCollection">
-              <Button variant="secondary" size="lg" className="w-100">
-                Create New Collection
-              </Button>
-            </Link>
-          </div>
+          <div className="m-2 mt-auto"></div>
         </div>
       </div>
       <Footer />

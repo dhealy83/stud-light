@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import sl from "../../assets/sl.png";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import Modal from "react-bootstrap/Modal";
-import { QUERY_USER_COLLECTION } from "../../utils/queries";
+// import { QUERY_USER_COLLECTION } from "../../utils/queries";
 import { DELETE_USER } from "../../utils/mutations";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import "./Nav.css";
 
-const Nav = () => {
+const Nav = ({ setCollectionID }) => {
   const [show, setShow] = useState(false);
   const [index, setIndex] = useState("");
 
@@ -23,15 +23,19 @@ const Nav = () => {
   // This handles the delete user mutation and closes the modal
   const [deleteUser, { error, data }] = useMutation(DELETE_USER);
 
-  const gotToUserCollection = (evt) => {
-    evt.preventDefault();
-    setIndex(evt.target.id);
-    console.log(index);
+  const goToUserCollection = (id) => {
+    setIndex(id);
 
-    localStorage.setItem("currentCollection", index);
+    localStorage.setItem("currentCollection", id);
 
+    setTimeout(() => {
+      navigate("/Carousel", { currentIndex: id });
 
-    // navigate("/Carousel");
+      if (setCollectionID) {
+        console.log("evt.target.id", id);
+        setCollectionID(id);
+      }
+    }, 500);
   };
 
   let mapCollections = [];
@@ -52,11 +56,10 @@ const Nav = () => {
               className="accordion-button collapsed bg-light"
               type="button"
               id={id}
-
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasExample"
               aria-controls="offcanvasExample"
-              onClick={gotToUserCollection}
+              onClick={() => goToUserCollection(id)}
             >
               {title}
             </button>
@@ -65,7 +68,7 @@ const Nav = () => {
       );
     });
   }
-
+  // Deletes a user
   const handleUserDelete = async (evt) => {
     evt.preventDefault();
     const userId = JSON.parse(localStorage.getItem("userData"));
