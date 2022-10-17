@@ -7,6 +7,7 @@ import { QUERY_USER_COLLECTION } from "../../utils/queries";
 import { DELETE_USER } from "../../utils/mutations";
 import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
+import "./Nav.css";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
@@ -22,33 +23,39 @@ const Nav = () => {
   // This handles the delete user mutation and closes the modal
   const [deleteUser, { error, data }] = useMutation(DELETE_USER);
 
-  const gotToUserCollection = () => {
-    // when the button is pressed we want to navigate to the carsouel page
-    // The page need to render the collection card associated with the button the user presses
-    console.log("Clicked");
+  const gotToUserCollection = (evt) => {
+    evt.preventDefault();
+    setIndex(evt.target.id);
+    console.log(index);
+
+    localStorage.setItem("currentCollection", index);
+
+
+    navigate("/Carousel");
   };
+
   let mapCollections = [];
 
   if (localStorage.getItem("userCollections") === null) {
     return;
   } else {
     const dat = JSON.parse(localStorage.getItem("userCollections"));
-    console.log(dat);
+
     const userCollection = dat.user.collections;
     mapCollections = userCollection.map((s) => {
       let title = s.title;
       let id = s._id;
       return (
-        <div className="accordion-item">
+        <div>
           <h2 className="accordion-header" id="flush-headingOne">
             <button
               className="accordion-button collapsed bg-light"
               type="button"
               id={id}
-              data-bs-toggle="collapse"
-              data-bs-target="#flush-FlashcardOne"
-              aria-expanded="false"
-              aria-controls="flush-FlashcardOne"
+
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
               onClick={gotToUserCollection}
             >
               {title}
@@ -141,11 +148,11 @@ const Nav = () => {
           </div>
         </div>
         <div className="m-2">
-          <div>
+          <div className="mb-5">
             <Button
               variant="secondary"
               onClick={handleShow}
-              className="mb-5 ms-3"
+              className="deleteUser"
             >
               Delete Account
             </Button>

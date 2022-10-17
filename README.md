@@ -21,7 +21,11 @@
 
 ## 2. Run command "npm run seed" to seed the database
 
+<<<<<<< HEAD
 ## 3. Run command "npm run develop" to start the engin
+=======
+## 3. Run command "npm run develop" to start the engine
+>>>>>>> 05de16d2d26929388d4b9634e06dc8f33d8b00b7
 
 ## Usage:
 
@@ -59,4 +63,7 @@ If you have any questions please email us at:
 ## David Healy: drtjprdave@gmail.com
 
 ## [Heroku link](https://stud-lite.herokuapp.com/)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05de16d2d26929388d4b9634e06dc8f33d8b00b7
