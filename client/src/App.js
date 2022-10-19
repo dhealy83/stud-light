@@ -47,19 +47,24 @@ const client = new ApolloClient({
 
 const App = () => {
   const [showNav, setShowNav] = useState(true);
+  const collectionId = localStorage.getItem("currentCollection");
+  const [collectionID, setCollectionID] = useState(collectionId);
 
   return (
     <ApolloProvider client={client}>
       {showNav && (
         <div>
-          <Nav />
+          <Nav setCollectionID={setCollectionID} />
         </div>
       )}
       <Routes>
         <Route index element={<LandingPage funcNav={setShowNav} />} />
 
         <Route path="/home" element={<HomePage />} />
-        <Route path="/Carousel" element={<Carousel />} />
+        <Route
+          path="/Carousel"
+          element={<Carousel collectionID={collectionID} />}
+        />
         <Route path="/AddCard" element={<AddCard />} />
         <Route path="/UpdateCard" element={<UpdateCard />} />
         <Route path="/NewCollection" element={<NewCollection />} />

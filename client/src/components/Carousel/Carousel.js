@@ -22,12 +22,10 @@ import cardBackground from "../../assets/cardBackground.jpg";
 import "./FlashCard.css";
 import RadioButtons from "./RadioButtons";
 
-const FlashCarousel = ({ route, navigation }) => {
+const FlashCarousel = ({ route, navigation, collectionID }) => {
   //const { currentIndex } = route.params;
 
-  const collectionId = localStorage.getItem("currentCollection");
   const [index, setIndex] = useState(0);
-  const [collectionID, setCollectionID] = useState(null);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -40,17 +38,13 @@ const FlashCarousel = ({ route, navigation }) => {
 
   const [toggle, setToggle] = useState(false);
 
-  const { loading, data, error } = useQuery(
+  const { loading, data, error, refetch } = useQuery(
     QUERY_SINGLE_COLLECTION,
     {
-      variables: { collectionId: collectionId },
+      variables: { collectionId: collectionID },
     },
     []
   );
-
-  // useEffect(() => {
-  //   if (toggle) window.location.reload();
-  // }, [toggle]);
 
   if (loading) return "Loading";
 
@@ -60,7 +54,7 @@ const FlashCarousel = ({ route, navigation }) => {
 
   return (
     <>
-      <OffcanvasNav setCollectionID={(id) => setCollectionID(id)} />
+      {/* <OffcanvasNav setCollectionID={setCollectionID} refetch={refetch} /> */}
       <div className="d-flex justify-content-center h-75">
         <div className="wholeCard">
           <div>
