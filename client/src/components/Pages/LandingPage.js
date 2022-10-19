@@ -42,78 +42,38 @@ const LandingPage = (props) => {
   };
 
   return (
-    <div className=" container-fluid bg-secondary h-100 overflow-hidden">
+    <div className=" container-fluid bg-secondary h-100">
       <div className="row vh-100">
         <header id="splash" className="bg-dark ">
-          <h1 className="staatliches fs-1 text-center text-light">
-            Stud Light
-          </h1>
-          <h1 className="staatliches fs-1 text-center text-light">
-            Stud Light
-          </h1>
-          <h1 className="staatliches fs-1 text-center text-light">
-            Stud Light
-          </h1>
-          <h1 className="staatliches fs-1 text-center text-light">
-            Stud Light
-          </h1>
-          <h1 className="staatliches fs-1 text-center text-light">
-            Stud Light
-          </h1>
-          <h1 className="staatliches fs-1 text-center text-light">
-            Stud Light
-          </h1>
-          <h1 className="staatliches fs-1 text-center text-light">
-            Stud Light
-          </h1>
-          <h1 className="staatliches fs-1 text-center text-light">
-            Stud Light
-          </h1>
+          <h1 className="staatliches fs-1 text-center text-light">Stud Light</h1>
+          <h1 className="staatliches fs-1 text-center text-light">Stud Light</h1>
+          <h1 className="staatliches fs-1 text-center text-light">Stud Light</h1>
+          <h1 className="staatliches fs-1 text-center text-light">Stud Light</h1>
+          <h1 className="staatliches fs-1 text-center text-light">Stud Light</h1>
+          <h1 className="staatliches fs-1 text-center text-light">Stud Light</h1>
+          <h1 className="staatliches fs-1 text-center text-light">Stud Light</h1>
+          <h1 className="staatliches fs-1 text-center text-light">Stud Light</h1>
         </header>
         <div className="bg-secondary">
           <section className="row m-3 justify-content-between">
             <div className="col-4  ">
-              <h1 className="staatliches fs-1 text-start text-dark">
-                Stud Light
-              </h1>
+              <h1 className="staatliches fs-1 text-start text-dark">Stud Light</h1>
               <h6 className="staatliches text-start text-light">
-                Increase your knowledge <br /> using flashcards to help you
-                continually study.
+                Increase your knowledge <br /> using flashcards to help you continually study.
               </h6>
             </div>
-            <Form
-              onSubmit={handleSubmit}
-              className="col-6 col-md-4 col-lg-3 col-xxl-2 me-2 align-self-end"
-            >
+            <Form onSubmit={handleSubmit} className="col-6 col-md-4 col-lg-3 col-xxl-2 me-2 align-self-end">
               <Form.Group className="my-3">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  name="email"
-                  type="email"
-                  placeholder="name@example.com"
-                  autoFocus
-                  value={formData.email}
-                  onChange={handleChange}
-                />
+                <Form.Control name="email" type="email" placeholder="name@example.com" autoFocus value={formData.email} onChange={handleChange} />
               </Form.Group>
               <Form.Group className="my-3">
                 <Form.Label>Password</Form.Label>
-                <Form.Control
-                  name="password"
-                  type="password"
-                  placeholder="password"
-                  autoFocus
-                  value={formData.password}
-                  onChange={handleChange}
-                />
+                <Form.Control name="password" type="password" placeholder="password" autoFocus value={formData.password} onChange={handleChange} />
               </Form.Group>
               <div>
                 <div className="">
-                  <Button
-                    type="submit"
-                    variant="danger"
-                    className="loginButton w-100 my-3"
-                  >
+                  <Button type="submit" variant="danger" className="loginButton w-100 my-3">
                     Login
                   </Button>
                 </div>

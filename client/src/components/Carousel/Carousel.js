@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { QUERY_SINGLE_COLLECTION } from "../../utils/queries";
 
-import {
-  FaQuestion as Question,
-  FaExclamation as Answer,
-} from "react-icons/fa";
+import { FaQuestionCircle as Question, FaExclamationCircle as Answer } from "react-icons/fa";
 // All of the Bootstrap imports
 
 // import FlashCard from "./FlashCard";
@@ -16,14 +13,7 @@ import {
 import OffcanvasNav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
 
-import {
-  Button,
-  Col,
-  Container,
-  Carousel,
-  Card,
-  ButtonGroup,
-} from "react-bootstrap";
+import { Row, Button, Col, Container, Carousel, Card, ButtonGroup } from "react-bootstrap";
 // All of the image imports
 import cardBackground from "../../assets/cardBackground.jpg";
 // import CardData from "./CardData";
@@ -69,60 +59,47 @@ const FlashCarousel = ({ route, navigation, collectionID }) => {
         <div className="wholeCard">
           <div>
             {data.collection.cards.length ? (
-              <Carousel
-                activeIndex={index}
-                onSelect={handleSelect}
-                className="card m-2 border boarder-2 boarder-secondary rounded-3 "
-                interval="10000000"
-              >
+              <Carousel activeIndex={index} onSelect={handleSelect} className="card m-2 border boarder-2 boarder-secondary rounded-3 " interval="10000000">
                 {data.collection.cards.map((obj, i) => {
                   return (
                     <Carousel.Item className="buttonCheckBox " key={obj._id}>
-                      <RadioButtons key={i} index={i} />
+                      {/* <RadioButtons key={i} index={i} /> */}
                       <Col className="d-flex justify-content-center mx-3">
                         <h1>{collectionTitle}</h1>
                         <ButtonGroup className="m-2 d-flex justify-content-end"></ButtonGroup>
                       </Col>
-                      <img
-                        className="d-block w-100"
-                        src={cardBackground}
-                        alt="First slide"
-                      />
+                      <img className="d-block w-100" src={cardBackground} alt="First slide" />
                       <Carousel.Caption className="carouselText text-dark ">
                         <Container className="">
                           <Col className="">
-                            {toggle ? (
-                              <a href="#" onClick={() => setToggle(!toggle)}>
-                                <CardIcon icon={<Question size="30" />} />
-                              </a>
-                            ) : (
-                              <a href="#" onClick={() => setToggle(!toggle)}>
-                                <CardIcon icon={<Answer size="30" />} />
-                              </a>
-                            )}
+                            <Row>
+                              {toggle && (
+                                <div class="container-fluid bg-muted w-75  border border-secondary border-3 p-3 my-2">
+                                  <p class="card-text text-lg">{obj.answer}</p>
+                                </div>
+                              )}
+                              {!toggle && (
+                                <div class="container-fluid bg-muted w-75  border border-secondary border-3 p-3 my-2">
+                                  <p class="card-text">{obj.question}</p>
+                                </div>
+                              )}
 
-                            {toggle && (
-                              <div className="flip-horizontal-bottom ">
-                                <div className="">
-                                  <p className=" card-text">{obj.answer}</p>
-                                </div>
-                              </div>
-                            )}
-                            {!toggle && (
-                              <div className="flip-horizontal-bottom">
-                                <div className="">
-                                  <p className=" card-text">{obj.question}</p>
-                                </div>
-                              </div>
-                            )}
+                              {toggle ? (
+                                <a href="#" onClick={() => setToggle(!toggle)}>
+                                  <CardIcon icon={<Question size="2rem" class="text-info" />} />
+                                </a>
+                              ) : (
+                                <a href="#" onClick={() => setToggle(!toggle)}>
+                                  <CardIcon icon={<Answer size="2rem" class="text-success" />} />
+                                </a>
+                              )}
+                            </Row>
                           </Col>
                         </Container>
                       </Carousel.Caption>
                       <div>
                         <Card className="m-2">
-                          <Card.Title className="bg-secondary text-white p-2 rounded-top">
-                            Notes
-                          </Card.Title>
+                          <Card.Title className="bg-secondary text-white p-2 rounded-top">Notes</Card.Title>
                           <Card.Body>
                             {/* notes are currently hardcoded to grab the notes of the second card in the array */}
                             <Card.Text>
@@ -152,12 +129,7 @@ const FlashCarousel = ({ route, navigation, collectionID }) => {
                 </Link>
               </div>
               <div className="m-2">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="w-100"
-                  onClick={handleShow}
-                >
+                <Button variant="secondary" size="lg" className="w-100" onClick={handleShow}>
                   Delete Collection
                 </Button>
               </div>
@@ -174,9 +146,7 @@ const FlashCarousel = ({ route, navigation, collectionID }) => {
             <Modal.Header closeButton>
               <Modal.Title>Modal heading</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              Are you sure you'd like to delete this card?
-            </Modal.Body>
+            <Modal.Body>Are you sure you'd like to delete this card?</Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
                 Cancel
