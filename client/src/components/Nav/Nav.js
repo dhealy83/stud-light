@@ -25,16 +25,15 @@ const Nav = ({ setCollectionID }) => {
 
   const goToUserCollection = (id) => {
     setIndex(id);
-
     localStorage.setItem("currentCollection", id);
 
     setTimeout(() => {
       navigate("/Carousel", { currentIndex: id });
 
-      if (setCollectionID) {
-        console.log("evt.target.id", id);
-        setCollectionID(id);
-      }
+      console.log("evt.target.id", id);
+      setCollectionID(id);
+
+      // refetch();
     }, 500);
   };
 
